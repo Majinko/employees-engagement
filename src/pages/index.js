@@ -1,13 +1,13 @@
 import React from 'react';
-import Paper from './../components/Paper';
+import PaperCard from './../components/PaperCard';
 import { Typography } from '@material-ui/core';
 
 export default class IndexPage extends React.Component {
   render() {
     return (
-      <Paper>
+      <PaperCard>
         <Typography variant="h1">Index</Typography>
-      </Paper>
+      </PaperCard>
     );
   }
 }
