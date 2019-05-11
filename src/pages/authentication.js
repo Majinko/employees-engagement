@@ -10,7 +10,6 @@ export default class AuthenticationPage extends React.Component {
   render() {
     return (
       <PaperCard>
-        <Typography variant="h1">Authentication</Typography>
         <AuthenticationTemplate />
       </PaperCard>
     );
