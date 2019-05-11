@@ -1,4 +1,34 @@
+# Employees Engagement
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b040011b-bd96-4e8c-9ec9-15841e0a3839/deploy-status)](https://app.netlify.com/sites/ecstatic-yalow-d6e20c/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Instalation of project
+
+Install project with `npm install`
+
+## Dependencies
+
+[Prettier](https://prettier.io/)
+
+Install with `yarn`:
+
+```bash
+yarn add prettier --dev --exact
+# or globally
+yarn global add prettier
+```
+
+_We're using `yarn` but you can use `npm` if you like:_
+
+```bash
+npm install --save-dev --save-exact prettier
+# or globally
+npm install --global prettier
+```
+
+---
 
 ## Available Scripts
 
