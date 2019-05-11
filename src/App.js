@@ -23,6 +23,12 @@ import {
   faEye,
   faEyeSlash,
   faSearch,
+  faUserHeadset,
+  faLightbulbOn,
+  faBullseyeArrow,
+  faHandshake,
+  faCalendarAlt,
+  faExchange,
 } from '@fortawesome/pro-light-svg-icons';
 
 library.add(
@@ -36,7 +42,13 @@ library.add(
   faBug,
   faEye,
   faEyeSlash,
-  faSearch
+  faSearch,
+  faUserHeadset,
+  faLightbulbOn,
+  faBullseyeArrow,
+  faHandshake,
+  faCalendarAlt,
+  faExchange
 );
 
 const theme = createMuiTheme({
