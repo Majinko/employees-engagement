@@ -8,7 +8,7 @@ export default class IndexPage extends React.Component {
   render() {
     return (
       <PaperCard>
-        <Typography variant="h1">Index</Typography>
+        <Typography variant="h1">Employees Engagement App</Typography>
       </PaperCard>
     );
   }

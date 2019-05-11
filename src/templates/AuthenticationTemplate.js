@@ -31,6 +31,11 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     maxWidth: '100%',
   },
+  image: {
+    display: 'block',
+    margin: '0 auto',
+    maxWidth: '100%',
+  },
 });
 
 class FullWidthTabs extends React.Component {
@@ -67,19 +72,19 @@ class FullWidthTabs extends React.Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-            <img src={authenticationIllustration} alt="Log in" />
-            <Typography gutterBottom component="h1" variant="h3">
-              {pages.authentication.login}
-            </Typography>
-            <Tabs />
+            <img
+              src={authenticationIllustration}
+              alt={pages.authentication.login}
+              className={classes.image}
+            />
             <AuthenticationFormControl />
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <img src={authenticationIllustration} alt="Log in" />
-            <Typography gutterBottom component="h1" variant="h3">
-              {pages.authentication.signup}
-            </Typography>
-            <Tabs />
+            <img
+              src={authenticationIllustration}
+              alt={pages.authentication.signup}
+              className={classes.image}
+            />
             <AuthenticationFormControl type="register" />
           </TabContainer>
         </SwipeableViews>
