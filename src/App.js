@@ -20,9 +20,22 @@ import {
   faCog,
   faSignOut,
   faBug,
+  faEye,
+  faEyeSlash,
 } from '@fortawesome/pro-light-svg-icons';
 
-library.add(faBars, faSignIn, faHome, faUser, faUsers, faCog, faSignOut, faBug);
+library.add(
+  faBars,
+  faSignIn,
+  faHome,
+  faUser,
+  faUsers,
+  faCog,
+  faSignOut,
+  faBug,
+  faEye,
+  faEyeSlash
+);
 
 const theme = createMuiTheme({
   palette: {
