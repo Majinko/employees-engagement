@@ -22,6 +22,7 @@ import {
   faBug,
   faEye,
   faEyeSlash,
+  faSearch,
 } from '@fortawesome/pro-light-svg-icons';
 
 library.add(
@@ -34,7 +35,8 @@ library.add(
   faSignOut,
   faBug,
   faEye,
-  faEyeSlash
+  faEyeSlash,
+  faSearch
 );
 
 const theme = createMuiTheme({
