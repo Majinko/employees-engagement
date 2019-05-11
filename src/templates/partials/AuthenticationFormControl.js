@@ -127,7 +127,7 @@ class AuthenticationFormControl extends React.Component {
           color="primary"
           className={classes.margin}
           component={Link}
-          to="/dashboard"
+          to="/home"
         >
           {register ? 'Sign up' : 'Log in'}
         </Button>
