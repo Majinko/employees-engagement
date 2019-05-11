@@ -17,21 +17,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getSentenceCase, getPath } from './../utils';
 import { menuItems } from './../data/menuItems';
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+    marginLeft: -theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 3,
   },
   menuWrapper: {
     width: 250,
   },
   menuItemIcon: {
-    marginRight: 16,
+    marginRight: theme.spacing.unit * 2,
   },
-};
+});
 
 class DrawerComponent extends React.Component {
   state = {
