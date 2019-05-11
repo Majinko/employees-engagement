@@ -10,6 +10,9 @@ const styles = theme => ({
     flexGrow: 1,
     padding: 16,
   },
+  gridItem: {
+    margin: '0 auto',
+  },
   paper: {
     marginTop: theme.spacing.unit,
     display: 'flex',
@@ -26,7 +29,7 @@ function PaperCard({ children, ...props }) {
   return (
     <div className={classes.root}>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item className={classes.gridItem} xs={12} md={6} lg={4}>
           <Paper className={classes.paper}>{children}</Paper>
         </Grid>
       </Grid>
