@@ -4,12 +4,7 @@ import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import CustomGrid from './CustomGrid';
-
 const styles = theme => ({
-  gridItem: {
-    margin: '0 auto',
-  },
   paper: {
     marginTop: theme.spacing.unit,
     display: 'flex',
@@ -23,11 +18,7 @@ const styles = theme => ({
 function PaperCard({ children, ...props }) {
   const { classes } = props;
 
-  return (
-    <CustomGrid>
-      <Paper className={classes.paper}>{children}</Paper>
-    </CustomGrid>
-  );
+  return <Paper className={classes.paper}>{children}</Paper>;
 }
 
 PaperCard.propTypes = {
