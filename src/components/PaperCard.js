@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Paper from '@material-ui/core/Paper';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   paper: {
