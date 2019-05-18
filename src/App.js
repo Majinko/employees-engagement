@@ -1,12 +1,16 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+
 import './App.scss';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Routes from './Routes';
 import history from './history';
+
+import store from './store';
 
 import Drawer from './components/Drawer';
 
@@ -103,12 +107,14 @@ const theme = createMuiTheme({
 class App extends React.Component {
   render() {
     return (
-      <Router history={history}>
-        <MuiThemeProvider theme={theme}>
-          <Drawer />
-          <Routes />
-        </MuiThemeProvider>
-      </Router>
+      <Provider store={store}>
+        <Router history={history}>
+          <MuiThemeProvider theme={theme}>
+            <Drawer />
+            <Routes />
+          </MuiThemeProvider>
+        </Router>
+      </Provider>
     );
   }
 }
