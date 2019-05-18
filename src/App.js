@@ -29,6 +29,7 @@ import {
   faHandshake,
   faCalendarAlt,
   faExchange,
+  faCommentAltSmile,
 } from '@fortawesome/pro-light-svg-icons';
 
 library.add(
@@ -48,7 +49,8 @@ library.add(
   faBullseyeArrow,
   faHandshake,
   faCalendarAlt,
-  faExchange
+  faExchange,
+  faCommentAltSmile
 );
 
 const theme = createMuiTheme({
