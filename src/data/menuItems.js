@@ -34,4 +34,9 @@ export const menuItems = [
     label: 'sign-out',
     icon: 'sign-out',
   },
+  {
+    hidden: false,
+    label: 'give-feedback',
+    icon: 'comment-alt-smile',
+  },
 ];
