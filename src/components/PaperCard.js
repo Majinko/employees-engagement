@@ -22,7 +22,7 @@ function PaperCard({ children, ...props }) {
 }
 
 PaperCard.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object,
 };
 
 export default withStyles(styles)(PaperCard);

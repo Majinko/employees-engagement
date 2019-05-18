@@ -137,7 +137,7 @@ class AuthenticationFormControl extends React.Component {
 }
 
 AuthenticationFormControl.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object,
   type: PropTypes.string,
 };
 

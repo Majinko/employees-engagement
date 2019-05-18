@@ -22,8 +22,8 @@ function TabContainer({ children, dir }) {
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  dir: PropTypes.string,
 };
 
 const styles = theme => ({
@@ -94,8 +94,8 @@ class FullWidthTabs extends React.Component {
 }
 
 FullWidthTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+  classes: PropTypes.object,
+  theme: PropTypes.object,
 };
 
 export default withStyles(styles, { withTheme: true })(FullWidthTabs);

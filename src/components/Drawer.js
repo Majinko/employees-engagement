@@ -109,7 +109,7 @@ class DrawerComponent extends React.Component {
 }
 
 DrawerComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object,
 };
 
 export default withStyles(styles)(DrawerComponent);

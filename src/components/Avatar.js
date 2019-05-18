@@ -11,9 +11,9 @@ function createStyled(styles, options) {
   }
 
   Styled.propTypes = {
-    children: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
-    initials: PropTypes.string.isRequired,
+    children: PropTypes.func,
+    classes: PropTypes.object,
+    initials: PropTypes.string,
   };
 
   return withStyles(styles, options)(Styled);

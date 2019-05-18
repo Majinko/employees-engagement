@@ -12,8 +12,9 @@ function createStyled(styles, options) {
   }
 
   Styled.propTypes = {
-    children: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
+    children: PropTypes.func,
+    classes: PropTypes.object,
+    aspectCard: PropTypes.bool,
   };
 
   return withStyles(styles, options)(Styled);
@@ -31,7 +32,7 @@ const Styled = createStyled(theme => ({
   },
 }));
 
-function PaperCard({ children, aspectCard, ...props }) {
+function AspectCard({ children, aspectCard, ...props }) {
   return (
     <Styled>
       {({ classes }) => (
@@ -49,9 +50,4 @@ function PaperCard({ children, aspectCard, ...props }) {
   );
 }
 
-PaperCard.propTypes = {
-  classes: PropTypes.object.isRequired,
-  aspectCard: PropTypes.bool,
-};
-
-export default PaperCard;
+export default AspectCard;
