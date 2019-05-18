@@ -1,13 +1,17 @@
 import React from 'react';
 
-import ProfileTemplate from '../templates/ProfileTemplate';
+import { Typography } from '@material-ui/core';
+
+import PaperCard from './../components/PaperCard';
 import CustomGrid from './../components/CustomGrid';
 
 export default class MyProfilePage extends React.Component {
   render() {
     return (
       <CustomGrid>
-        <ProfileTemplate />
+        <PaperCard>
+          <Typography variant="h1">My Profile</Typography>
+        </PaperCard>
       </CustomGrid>
     );
   }
