@@ -1,11 +1,11 @@
 export const menuItems = [
   {
-    hidden: false,
+    hidden: true,
     label: 'splash-screen',
     icon: 'bug',
   },
   {
-    hidden: false,
+    hidden: true,
     label: 'authentication',
     icon: 'sign-in',
   },
@@ -20,18 +20,23 @@ export const menuItems = [
     icon: 'user',
   },
   {
-    hidden: false,
+    hidden: true,
     label: 'my-team',
     icon: 'users',
   },
   {
-    hidden: false,
+    hidden: true,
     label: 'settings',
     icon: 'cog',
   },
   {
-    hidden: false,
+    hidden: true,
     label: 'sign-out',
     icon: 'sign-out',
+  },
+  {
+    hidden: false,
+    label: 'give-feedback',
+    icon: 'comment-alt-smile',
   },
 ];

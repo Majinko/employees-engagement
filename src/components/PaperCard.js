@@ -1,18 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing.unit,
-  },
-  gridItem: {
-    margin: '0 auto',
-  },
   paper: {
     marginTop: theme.spacing.unit,
     display: 'flex',
@@ -26,15 +18,7 @@ const styles = theme => ({
 function PaperCard({ children, ...props }) {
   const { classes } = props;
 
-  return (
-    <div className={classes.root}>
-      <Grid container>
-        <Grid item className={classes.gridItem} xs={12} md={6} lg={4}>
-          <Paper className={classes.paper}>{children}</Paper>
-        </Grid>
-      </Grid>
-    </div>
-  );
+  return <Paper className={classes.paper}>{children}</Paper>;
 }
 
 PaperCard.propTypes = {

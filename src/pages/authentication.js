@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { Typography } from '@material-ui/core';
-
 import PaperCard from './../components/PaperCard';
+import CustomGrid from './../components/CustomGrid';
 
 import AuthenticationTemplate from '../templates/AuthenticationTemplate';
 
 export default class AuthenticationPage extends React.Component {
   render() {
     return (
-      <PaperCard>
-        <Typography variant="h1">Authentication</Typography>
-        <AuthenticationTemplate />
-      </PaperCard>
+      <CustomGrid>
+        <PaperCard>
+          <AuthenticationTemplate />
+        </PaperCard>
+      </CustomGrid>
     );
   }
 }

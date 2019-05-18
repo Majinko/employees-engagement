@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { withStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 
-import authenticationIllustration from './../assets/illustrations/authentication.svg';
+import PaperCard from '../components/PaperCard';
 
-import AuthenticationFormControl from './partials/AuthenticationFormControl';
-
-import { pages } from './../data/pages';
+import { pages } from '../data/pages';
 
 function TabContainer({ children, dir }) {
   return (
@@ -31,10 +35,14 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     maxWidth: '100%',
   },
-  image: {
-    display: 'block',
+  marginTop: {
+    marginTop: theme.spacing.unit * 2,
+  },
+  gridItem: {
     margin: '0 auto',
-    maxWidth: '100%',
+  },
+  menuItemIcon: {
+    marginBottom: 16,
   },
 });
 
@@ -63,8 +71,8 @@ class FullWidthTabs extends React.Component {
           textColor="primary"
           variant="fullWidth"
         >
-          <Tab label={pages.authentication.login} />
-          <Tab label={pages.authentication.signup} />
+          <Tab label={pages.home.giveFeedbackTab} />
+          <Tab label={pages.home.dashboardTab} />
         </Tabs>
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -72,20 +80,37 @@ class FullWidthTabs extends React.Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-            <img
-              src={authenticationIllustration}
-              alt={pages.authentication.login}
-              className={classes.image}
-            />
-            <AuthenticationFormControl />
+            <Typography variant="h1" gutterBottom>
+              {pages.home.giveFeedbackTitle}
+            </Typography>
+            <Typography variant="h3" gutterBottom>
+              {pages.home.giveFeedbackLabel}
+            </Typography>
+            <FormControl fullWidth className={classes.marginTop}>
+              <Input
+                id="search"
+                type="text"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <FontAwesomeIcon
+                      icon={['fal', 'search']}
+                      size="lg"
+                      className={classes.menuItemIcon}
+                    />
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <img
-              src={authenticationIllustration}
-              alt={pages.authentication.signup}
-              className={classes.image}
-            />
-            <AuthenticationFormControl type="register" />
+            <Typography variant="h3" gutterBottom>
+              {pages.home.dashboardIndividualRatings}
+            </Typography>
+            <PaperCard>...</PaperCard>
+            <Typography variant="h3" gutterBottom style={{ marginTop: 32 }}>
+              {pages.home.dashboardOverallRatings}
+            </Typography>
+            <PaperCard>...</PaperCard>
           </TabContainer>
         </SwipeableViews>
       </div>
