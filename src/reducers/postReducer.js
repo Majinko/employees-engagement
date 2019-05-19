@@ -6,7 +6,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
 
-        items: action.payload,
+        aspects: action.payload,
       };
     default:
       return state;
