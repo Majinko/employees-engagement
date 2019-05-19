@@ -53,7 +53,7 @@ Something.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  aspects: state.aspects.items,
+  aspects: state.aspects.aspects,
 });
 
 export default connect(
