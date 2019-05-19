@@ -11,3 +11,20 @@ export const fetchAspects = () => dispatch => {
       })
     );
 };
+
+export const setAspect = aspectData => dispatch => {
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(aspectData),
+  })
+    .then(res => res.json())
+    .then(selected =>
+      dispatch({
+        type: 'SET_ASPECT',
+        payload: selected,
+      })
+    );
+};

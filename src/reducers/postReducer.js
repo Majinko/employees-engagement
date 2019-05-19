@@ -8,6 +8,11 @@ export default function(state = initialState, action) {
 
         aspects: action.payload,
       };
+    case 'SELECT_ASPECT':
+      return {
+        ...state,
+        item: action.payload,
+      };
     default:
       return state;
   }

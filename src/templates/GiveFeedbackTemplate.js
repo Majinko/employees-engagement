@@ -32,7 +32,7 @@ class Something extends Component {
           {this.props.aspects &&
             this.props.aspects.map(aspect => (
               <Grid item xs={6} key={aspect.text}>
-                <AspectCard aspectCard>
+                <AspectCard>
                   <FontAwesomeIcon icon={['fal', aspect.icon]} size="3x" />
                   <Typography component={'h5'}>{aspect.text}</Typography>
                 </AspectCard>

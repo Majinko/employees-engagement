@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 
-import { createPost } from '../actions/postActions';
+import { setAspect } from '../actions/postActions';
 
 function createStyled(styles, options) {
   function Styled(props) {
@@ -48,10 +48,10 @@ class AspectCard extends Component {
 
     const element = this.props.children[1].props.children;
     this.setState({ title: element }, () => {
-      const post = {
+      const elementTitle = {
         title: this.state.title,
       };
-      this.props.createPost(post);
+      this.props.setAspect(elementTitle);
     });
   }
 
@@ -74,10 +74,10 @@ class AspectCard extends Component {
 }
 
 AspectCard.propTypes = {
-  createPost: PropTypes.func.isRequired,
+  setAspect: PropTypes.func.isRequired,
 };
 
 export default connect(
   null,
-  { createPost }
+  { setAspect }
 )(AspectCard);
