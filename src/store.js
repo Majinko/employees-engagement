@@ -3,16 +3,7 @@ import ReduxThunk from 'redux-thunk';
 
 import rootReducer from './reducers/index';
 
-const initialState = {
-  aspects: [
-    { icon: 'user-headset', text: 'Excellent communication' },
-    { icon: 'lightbulb-on', text: 'Extraordinary creativity' },
-    { icon: 'bullseye-arrow', text: 'Goal-oriented' },
-    { icon: 'handshake', text: 'Effective cooperation' },
-    { icon: 'calendar-alt', text: 'Precise planning' },
-    { icon: 'exchange', text: 'There was more' },
-  ],
-};
+const initialState = {};
 
 const middleware = [ReduxThunk];
 
