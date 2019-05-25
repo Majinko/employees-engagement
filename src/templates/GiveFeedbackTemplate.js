@@ -50,7 +50,12 @@ class Something extends Component {
         <Grid container justify="center" spacing={16}>
           {aspects &&
             aspects.map(aspect => (
-              <Grid item xs={6} key={aspect.text}>
+              <Grid
+                item
+                xs={6}
+                key={aspect.text}
+                onClick={aspect.type === 'more' ? this.handleClickOpen : null}
+              >
                 <AspectCard aspect={aspect} />
               </Grid>
             ))}
@@ -62,13 +67,6 @@ class Something extends Component {
           className={classes.button}
         >
           {pages.profile.submitButton}
-        </Button>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={this.handleClickOpen}
-        >
-          Open responsive dialog
         </Button>
         <Dialog
           opened={this.state.opened}
