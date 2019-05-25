@@ -1,4 +1,6 @@
-const initialState = {};
+const initialState = {
+  aspects: [],
+};
 
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -9,10 +11,10 @@ export default function(state = initialState, action) {
         aspects: action.payload,
       };
     case 'SELECT_ASPECT':
-      return {
-        ...state,
-        item: action.payload,
-      };
+      state.aspects[action.payload.id].isActive = action.payload.value;
+
+      return JSON.parse(JSON.stringify(state));
+
     default:
       return state;
   }
