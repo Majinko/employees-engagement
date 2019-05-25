@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 
-import { setAspect } from '../actions/postActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { setAspect } from '../actions/aspectActions';
 
 function createStyled(styles, options) {
   function Styled(props) {
@@ -40,32 +43,30 @@ class AspectCard extends Component {
     super(props);
     this.state = { title: '' };
 
-    this.ClickFn = this.ClickFn.bind(this);
+    this.setAspectOnClick = this.setAspectOnClick.bind(this);
   }
 
-  ClickFn(e) {
-    e.currentTarget.classList.toggle('active');
-
-    const element = this.props.children[1].props.children;
-    this.setState({ title: element }, () => {
-      const elementTitle = {
-        title: this.state.title,
-      };
-      this.props.setAspect(elementTitle);
-    });
+  setAspectOnClick(id, value) {
+    this.props.setAspect(id, !value);
   }
 
   render() {
+    const { aspect } = this.props;
+
     return (
       <Styled>
         {({ classes }) => (
           <Paper
-            className={classes.aspectCard}
+            className={
+              aspect.isActive
+                ? [classes.aspectCard, classes.aspectCardActive].join(' ')
+                : classes.aspectCard
+            }
             component={Button}
-            onClick={this.ClickFn}
-            data-aspect={this.props.children[1].props.children}
+            onClick={() => this.setAspectOnClick(aspect.id, aspect.isActive)}
           >
-            {this.props.children}
+            <FontAwesomeIcon icon={['fal', aspect.icon]} size="3x" />
+            <Typography component={'h5'}>{aspect.text}</Typography>
           </Paper>
         )}
       </Styled>
