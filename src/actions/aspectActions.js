@@ -14,14 +14,14 @@ export const fetchAspects = () => dispatch => {
 
 export const setAspect = (id, value) => dispatch => {
   dispatch({
-    type: 'SELECT_ASPECT',
+    type: 'SET_ASPECT',
     payload: { id, value },
   });
 };
 
 export const unsetAspect = (id, value) => dispatch => {
   dispatch({
-    type: 'DESELECT_ASPECT',
+    type: 'UNSET_ASPECT',
     payload: { id, value },
   });
 };

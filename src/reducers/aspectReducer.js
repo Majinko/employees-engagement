@@ -10,11 +10,11 @@ export default function(state = initialState, action) {
         aspects: action.payload,
       };
 
-    case 'SELECT_ASPECT':
+    case 'SET_ASPECT':
       state.aspects[action.payload.id].isActive = action.payload.value;
       return JSON.parse(JSON.stringify(state));
 
-    case 'DESELECT_ASPECT':
+    case 'UNSET_ASPECT':
       state.aspects[action.payload.id].isActive = action.payload.value;
       return JSON.parse(JSON.stringify(state));
 
