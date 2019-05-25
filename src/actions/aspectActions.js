@@ -19,6 +19,13 @@ export const setAspect = (id, value) => dispatch => {
   });
 };
 
+export const unsetAspect = (id, value) => dispatch => {
+  dispatch({
+    type: 'DESELECT_ASPECT',
+    payload: { id, value },
+  });
+};
+
 export const leaveFeedback = (id, payload) => dispatch => {
   dispatch({
     type: 'LEAVE_FEEDBACK',
