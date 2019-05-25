@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import postReducer from './postReducer';
+import aspectReducer from './aspectReducer';
 
 export default combineReducers({
-  aspects: postReducer,
+  aspects: aspectReducer,
 });
