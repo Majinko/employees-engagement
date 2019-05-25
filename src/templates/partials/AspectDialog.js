@@ -14,6 +14,10 @@ import Bar from '../../components/Bar';
 import BarItem from '../../components/BarItem';
 import { withStyles } from '@material-ui/core/styles';
 
+import { leaveFeedback } from './../../actions/aspectActions';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -40,7 +44,9 @@ class AspectDialog extends React.Component {
 
   handleSave = () => {
     this.props.handleClose();
-    console.log(this.state.feedback);
+    // TODO: fix hardcoded feedback id
+    this.state.feedback !== null &&
+      this.props.leaveFeedback(5, this.state.feedback);
   };
 
   render() {
@@ -100,6 +106,14 @@ class AspectDialog extends React.Component {
 
 AspectDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
+  leaveFeedback: PropTypes.func.isRequired,
 };
 
-export default withMobileDialog()(withStyles(styles)(AspectDialog));
+export default compose(
+  withMobileDialog(),
+  withStyles(styles),
+  connect(
+    null,
+    { leaveFeedback }
+  )
+)(AspectDialog);

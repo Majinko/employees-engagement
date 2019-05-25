@@ -18,3 +18,10 @@ export const setAspect = (id, value) => dispatch => {
     payload: { id, value },
   });
 };
+
+export const leaveFeedback = (id, payload) => dispatch => {
+  dispatch({
+    type: 'LEAVE_FEEDBACK',
+    payload: { id, payload },
+  });
+};
