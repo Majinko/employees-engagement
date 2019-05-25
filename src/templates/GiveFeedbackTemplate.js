@@ -10,7 +10,7 @@ import { pages } from './../data/pages';
 
 import AspectCard from './../components/AspectCard';
 import PaperCard from './../components/PaperCard';
-import Dialog from './../components/Dialog';
+import AspectDialog from './../templates/partials/AspectDialog';
 
 import { fetchAspects } from '../actions/aspectActions';
 import { connect } from 'react-redux';
@@ -68,7 +68,7 @@ class Something extends Component {
         >
           {pages.profile.submitButton}
         </Button>
-        <Dialog
+        <AspectDialog
           opened={this.state.opened}
           handleClose={() => this.handleClose()}
         />
