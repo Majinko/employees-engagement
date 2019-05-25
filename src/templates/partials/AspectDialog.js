@@ -23,12 +23,24 @@ const styles = theme => ({
 });
 
 class AspectDialog extends React.Component {
-  state = {
-    open: false,
-  };
+  constructor(props) {
+    super(props);
 
-  handleClose = () => {
-    this.setState({ open: false });
+    this.state = {
+      feedback: null,
+    };
+
+    this.handleSave = this.handleSave.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({ feedback: e.target.value });
+  }
+
+  handleSave = () => {
+    this.props.handleClose();
+    console.log(this.state.feedback);
   };
 
   render() {
@@ -53,6 +65,7 @@ class AspectDialog extends React.Component {
               type="email"
               fullWidth
               multiline
+              onChange={this.onChange}
             />
             <PaperCard>
               <Bar>
@@ -71,7 +84,7 @@ class AspectDialog extends React.Component {
           </DialogContent>
           <DialogActions>
             <Button
-              onClick={handleClose}
+              onClick={this.handleSave}
               color="primary"
               variant="contained"
               autoFocus
