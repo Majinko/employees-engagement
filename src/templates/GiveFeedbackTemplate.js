@@ -6,16 +6,15 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { pages } from './../data/pages';
 
 import AspectCard from './../components/AspectCard';
-import Avatar from './../components/Avatar';
 import PaperCard from './../components/PaperCard';
+import Dialog from './../components/Dialog';
 
-import { fetchAspects } from '../actions/postActions';
+import { fetchAspects } from '../actions/aspectActions';
 import { connect } from 'react-redux';
+import ProfileInfo from './../components/ProfileInfo';
 
 const styles = theme => ({
   button: {
@@ -28,23 +27,31 @@ class Something extends Component {
     this.props.fetchAspects();
   }
 
-  render() {
-    const { classes } = this.props;
+  state = {
+    opened: false,
+  };
 
+  handleClickOpen = () => {
+    this.setState({ opened: true });
+  };
+
+  handleClose = () => {
+    this.setState({ opened: false });
+  };
+
+  render() {
+    const { classes, aspects } = this.props;
     return (
       <PaperCard>
         <Typography variant="h1" gutterBottom>
           Give Feedback
         </Typography>
-        <Avatar initials="L" />
+        <ProfileInfo name="Linda Krásna" position="Project Lead" />
         <Grid container justify="center" spacing={16}>
-          {this.props.aspects &&
-            this.props.aspects.map(aspect => (
+          {aspects &&
+            aspects.map(aspect => (
               <Grid item xs={6} key={aspect.text}>
-                <AspectCard>
-                  <FontAwesomeIcon icon={['fal', aspect.icon]} size="3x" />
-                  <Typography component={'h5'}>{aspect.text}</Typography>
-                </AspectCard>
+                <AspectCard aspect={aspect} />
               </Grid>
             ))}
         </Grid>
@@ -56,6 +63,17 @@ class Something extends Component {
         >
           {pages.profile.submitButton}
         </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={this.handleClickOpen}
+        >
+          Open responsive dialog
+        </Button>
+        <Dialog
+          opened={this.state.opened}
+          handleClose={() => this.handleClose()}
+        />
       </PaperCard>
     );
   }
