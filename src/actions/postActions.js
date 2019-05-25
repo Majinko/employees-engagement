@@ -1,5 +1,5 @@
 const link =
-  'https://gist.githubusercontent.com/LukasPolak/a44080ed5b6e4e840363d672e5af0fd0/raw/8b5de78a93d69a2280c53c0d928de28fbb42b500/ee_aspects.json';
+  'https://gist.githubusercontent.com/LukasPolak/a44080ed5b6e4e840363d672e5af0fd0/raw/5b5d963aaa71a41321524d623f2b6217d44434e5/ee_aspects.json';
 
 export const fetchAspects = () => dispatch => {
   fetch(link)
@@ -12,19 +12,9 @@ export const fetchAspects = () => dispatch => {
     );
 };
 
-export const setAspect = aspectData => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify(aspectData),
-  })
-    .then(res => res.json())
-    .then(selected =>
-      dispatch({
-        type: 'SET_ASPECT',
-        payload: selected,
-      })
-    );
+export const setAspect = (id, value) => dispatch => {
+  dispatch({
+    type: 'SELECT_ASPECT',
+    payload: { id, value },
+  });
 };
