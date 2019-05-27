@@ -5,7 +5,7 @@ export const menuItems = [
     icon: 'bug',
   },
   {
-    hidden: true,
+    hidden: false,
     label: 'authentication',
     icon: 'sign-in',
   },
