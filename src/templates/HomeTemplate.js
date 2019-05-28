@@ -26,8 +26,8 @@ function TabContainer({ children, dir }) {
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  dir: PropTypes.string,
 };
 
 const styles = theme => ({
@@ -37,12 +37,6 @@ const styles = theme => ({
   },
   marginTop: {
     marginTop: theme.spacing.unit * 2,
-  },
-  gridItem: {
-    margin: '0 auto',
-  },
-  menuItemIcon: {
-    marginBottom: 16,
   },
 });
 
@@ -92,11 +86,7 @@ class FullWidthTabs extends React.Component {
                 type="text"
                 endAdornment={
                   <InputAdornment position="end">
-                    <FontAwesomeIcon
-                      icon={['fal', 'search']}
-                      size="lg"
-                      className={classes.menuItemIcon}
-                    />
+                    <FontAwesomeIcon icon={['fal', 'search']} size="lg" />
                   </InputAdornment>
                 }
               />
@@ -119,8 +109,8 @@ class FullWidthTabs extends React.Component {
 }
 
 FullWidthTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+  classes: PropTypes.object,
+  theme: PropTypes.object,
 };
 
 export default withStyles(styles, { withTheme: true })(FullWidthTabs);

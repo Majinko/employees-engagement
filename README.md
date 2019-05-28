@@ -4,7 +4,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Instalation of project
+## Installation of project
 
 Install project with `npm install`
 
