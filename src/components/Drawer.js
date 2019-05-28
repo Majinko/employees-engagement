@@ -22,14 +22,14 @@ const styles = theme => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginLeft: -theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 3,
+    marginLeft: -theme.spacing(2),
+    marginRight: theme.spacing(3),
   },
   menuWrapper: {
     width: 250,
   },
   menuItemIcon: {
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
   },
 });
 

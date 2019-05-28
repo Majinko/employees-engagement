@@ -29,7 +29,7 @@ function createStyled(styles, options) {
 const Styled = createStyled(theme => ({
   aspectCard: {
     border: '2px solid transparent',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     display: 'block',
     width: '100%',
   },

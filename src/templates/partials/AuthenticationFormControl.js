@@ -14,11 +14,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { pages } from './../../data/pages';
-import { authenticationService } from '../../services/authentication.service'
+import { authenticationService } from '../../services/authentication.service';
 
 const styles = theme => ({
   margin: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
   },
 });
 
@@ -44,10 +44,10 @@ class AuthenticationFormControl extends React.Component {
     }));
   };
 
-  submit = (event) => {
+  submit = event => {
     event.preventDefault();
-    authenticationService.login('marek.hlafvco@gmail.com', '123456')
-  }
+    authenticationService.login('marek.hlafvco@gmail.com', '123456');
+  };
 
   render() {
     const { classes, type } = this.props;
@@ -56,7 +56,11 @@ class AuthenticationFormControl extends React.Component {
 
     return (
       <React.Fragment>
-        <FormControl fullWidth className={classes.margin} onSubmit={this.submit}>
+        <FormControl
+          fullWidth
+          className={classes.margin}
+          onSubmit={this.submit}
+        >
           <InputLabel htmlFor="email">{pages.authentication.email}</InputLabel>
           <Input id="email" type="email" />
         </FormControl>
