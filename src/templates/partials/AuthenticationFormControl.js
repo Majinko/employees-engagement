@@ -61,15 +61,17 @@ class AuthenticationFormControl extends React.Component {
           className={classes.margin}
           onSubmit={this.submit}
         >
-          <InputLabel htmlFor="email">{pages.authentication.email}</InputLabel>
-          <Input id="email" type="email" />
+          <InputLabel htmlFor={register ? 'register-email' : 'email'}>
+            {pages.authentication.email}
+          </InputLabel>
+          <Input id={register ? 'register-email' : 'email'} type="email" />
         </FormControl>
         <FormControl fullWidth className={classes.margin}>
-          <InputLabel htmlFor="password">
+          <InputLabel htmlFor={register ? 'register-password' : 'password'}>
             {pages.authentication.password}
           </InputLabel>
           <Input
-            id="password"
+            id={register ? 'register-password' : 'password'}
             type={this.state.showPassword ? 'text' : 'password'}
             value={this.state.password}
             onChange={this.handleChange('password')}
