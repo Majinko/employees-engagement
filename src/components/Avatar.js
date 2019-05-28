@@ -24,7 +24,7 @@ const Styled = createStyled(theme => ({
     background: theme.palette.primary.main,
     width: 64,
     height: 64,
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing(1),
   },
 }));
 

@@ -18,7 +18,7 @@ import ProfileInfo from './../components/ProfileInfo';
 
 const styles = theme => ({
   button: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
 });
 
@@ -47,7 +47,7 @@ class Something extends Component {
           Give Feedback
         </Typography>
         <ProfileInfo name="Linda Krásna" position="Project Lead" />
-        <Grid container justify="center" spacing={16}>
+        <Grid container justify="center" spacing={4}>
           {aspects &&
             aspects.map(aspect => (
               <Grid

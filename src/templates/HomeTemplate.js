@@ -36,7 +36,7 @@ const styles = theme => ({
     maxWidth: '100%',
   },
   marginTop: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
 });
 

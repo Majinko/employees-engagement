@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
   },
   gridItem: {
     margin: '0 auto',

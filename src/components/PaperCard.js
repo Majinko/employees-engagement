@@ -6,12 +6,13 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   paper: {
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(
+      3
+    )}px`,
   },
 });
 
