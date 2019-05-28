@@ -1,64 +1,76 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import InputLabel from '@material-ui/core/InputLabel';
+import { withStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import FormControl from '@material-ui/core/FormControl'
+import IconButton from '@material-ui/core/IconButton'
+import Input from '@material-ui/core/Input'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import InputLabel from '@material-ui/core/InputLabel'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { pages } from './../../data/pages';
+import { pages } from './../../data/pages'
 import { authenticationService } from '../../services/authentication.service'
+
+import {withRouter} from 'react-router'
 
 const styles = theme => ({
   margin: {
     margin: theme.spacing.unit,
-  },
-});
+  }
+})
 
-class AuthenticationFormControl extends React.Component {
+class AuthenticationFormControl extends React.Component
+{
   state = {
+    path: '/authentication',
+    email: '',
     password: '',
     showPassword: false,
     repeatedPassword: '',
     showRepeatedPassword: false,
-  };
+  }
 
   handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+    this.setState({ [prop]: event.target.value })
+  }
 
   handleClickShowPassword = () => {
-    this.setState(state => ({ showPassword: !state.showPassword }));
-  };
+    this.setState(state => ({ showPassword: !state.showPassword }))
+  }
 
   handleClickShowRepeatedPassword = () => {
     this.setState(state => ({
       showRepeatedPassword: !state.showRepeatedPassword,
-    }));
-  };
-
-  submit = (event) => {
-    event.preventDefault();
-    authenticationService.login('marek.hlafvco@gmail.com', '123456')
+    }))
   }
 
-  render() {
-    const { classes, type } = this.props;
+  submit = (event) => {
+    authenticationService.login(this.state.email, this.state.password).then(
+      page => {
+        this.props.history.push('/home');
+      },
+    )
+  }
 
-    const register = type === 'register';
+  render ()
+  {
+    const { classes, type } = this.props
+
+    const register = type === 'register'
 
     return (
       <React.Fragment>
-        <FormControl fullWidth className={classes.margin} onSubmit={this.submit}>
+        <FormControl fullWidth className={classes.margin}>
           <InputLabel htmlFor="email">{pages.authentication.email}</InputLabel>
-          <Input id="email" type="email" />
+          <Input id="email"
+                 type="email"
+                 onChange={this.handleChange('email')}
+          />
         </FormControl>
         <FormControl fullWidth className={classes.margin}>
           <InputLabel htmlFor="password">
@@ -134,18 +146,21 @@ class AuthenticationFormControl extends React.Component {
           color="primary"
           className={classes.margin}
           component={Link}
-          to="/home"
+          to={this.state.path}
         >
           {register ? 'Sign up' : 'Log in'}
         </Button>
       </React.Fragment>
-    );
+    )
   }
 }
 
 AuthenticationFormControl.propTypes = {
   classes: PropTypes.object.isRequired,
   type: PropTypes.string,
-};
+  match: PropTypes.object,
+  location: PropTypes.object,
+  history: PropTypes.object
+}
 
-export default withStyles(styles)(AuthenticationFormControl);
+export default withRouter(withStyles(styles)(AuthenticationFormControl))
