@@ -16,6 +16,8 @@ import { fetchAspects } from '../actions/aspectActions';
 import { connect } from 'react-redux';
 import ProfileInfo from './../components/ProfileInfo';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const styles = theme => ({
   button: {
     marginTop: theme.spacing(2),
@@ -41,37 +43,45 @@ class Something extends Component {
 
   render() {
     const { classes, aspects } = this.props;
+
+    if (aspects.length > 0) {
+      return (
+        <PaperCard>
+          <Typography variant="h1" gutterBottom>
+            Give Feedback
+          </Typography>
+          <ProfileInfo name="Linda Krásna" position="Project Lead" />
+          <Grid container justify="center" spacing={4}>
+            {aspects &&
+              aspects.map(aspect => (
+                <Grid
+                  item
+                  xs={6}
+                  key={aspect.text}
+                  onClick={aspect.type === 'more' ? this.handleClickOpen : null}
+                >
+                  <AspectCard aspect={aspect} />
+                </Grid>
+              ))}
+          </Grid>
+          <Button
+            variant="contained"
+            color="primary"
+            to="/home"
+            className={classes.button}
+          >
+            {pages.profile.submitButton}
+          </Button>
+          <AspectDialog
+            opened={this.state.opened}
+            handleClose={() => this.handleClose()}
+          />
+        </PaperCard>
+      );
+    }
     return (
       <PaperCard>
-        <Typography variant="h1" gutterBottom>
-          Give Feedback
-        </Typography>
-        <ProfileInfo name="Linda Krásna" position="Project Lead" />
-        <Grid container justify="center" spacing={4}>
-          {aspects &&
-            aspects.map(aspect => (
-              <Grid
-                item
-                xs={6}
-                key={aspect.text}
-                onClick={aspect.type === 'more' ? this.handleClickOpen : null}
-              >
-                <AspectCard aspect={aspect} />
-              </Grid>
-            ))}
-        </Grid>
-        <Button
-          variant="contained"
-          color="primary"
-          to="/home"
-          className={classes.button}
-        >
-          {pages.profile.submitButton}
-        </Button>
-        <AspectDialog
-          opened={this.state.opened}
-          handleClose={() => this.handleClose()}
-        />
+        <CircularProgress />;
       </PaperCard>
     );
   }
