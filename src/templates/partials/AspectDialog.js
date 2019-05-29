@@ -14,7 +14,11 @@ import Bar from '../../components/Bar';
 import BarItem from '../../components/BarItem';
 import { withStyles } from '@material-ui/core/styles';
 
-import { leaveFeedback, unsetAspect } from './../../actions/aspectActions';
+import {
+  leaveFeedback,
+  setAspect,
+  unsetAspect,
+} from './../../actions/aspectActions';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
@@ -31,7 +35,7 @@ class AspectDialog extends React.Component {
     super(props);
 
     this.state = {
-      feedback: null,
+      feedback: '',
     };
 
     this.handleSave = this.handleSave.bind(this);
@@ -45,9 +49,12 @@ class AspectDialog extends React.Component {
   handleSave = () => {
     this.props.handleClose();
     // TODO: fix hardcoded feedback id
-    this.state.feedback === null
-      ? this.props.unsetAspect(5, false)
-      : this.props.leaveFeedback(5, this.state.feedback);
+    if (this.state.feedback.length === 0) {
+      this.props.unsetAspect(5, false);
+    } else {
+      this.props.setAspect(5, true);
+      this.props.leaveFeedback(5, this.state.feedback);
+    }
   };
 
   render() {
@@ -73,6 +80,7 @@ class AspectDialog extends React.Component {
               fullWidth
               multiline
               onChange={this.onChange}
+              value={this.state.feedback}
             />
             <PaperCard>
               <Bar>
@@ -109,13 +117,18 @@ AspectDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
   leaveFeedback: PropTypes.func.isRequired,
   unsetAspect: PropTypes.func.isRequired,
+  setAspect: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = state => ({
+  aspects: state.aspects.aspects,
+});
 
 export default compose(
   withMobileDialog(),
   withStyles(styles),
   connect(
-    null,
-    { leaveFeedback, unsetAspect }
+    mapStateToProps,
+    { leaveFeedback, setAspect, unsetAspect }
   )
 )(AspectDialog);
