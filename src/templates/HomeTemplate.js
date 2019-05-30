@@ -1,21 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import SwipeableViews from 'react-swipeable-views';
+import SwipeableViews from "react-swipeable-views";
+import { userService } from "../services/user.service";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { withStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import Typography from '@material-ui/core/Typography';
+import { withStyles } from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
+import Input from "@material-ui/core/Input";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import Typography from "@material-ui/core/Typography";
 
-import PaperCard from '../components/PaperCard';
+import PaperCard from "../components/PaperCard";
 
-import { pages } from '../data/pages';
+import { pages } from "../data/pages";
 
 function TabContainer({ children, dir }) {
   return (
@@ -27,22 +28,22 @@ function TabContainer({ children, dir }) {
 
 TabContainer.propTypes = {
   children: PropTypes.node,
-  dir: PropTypes.string,
+  dir: PropTypes.string
 };
 
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    maxWidth: '100%',
+    maxWidth: "100%"
   },
   marginTop: {
-    marginTop: theme.spacing(2),
-  },
+    marginTop: theme.spacing(2)
+  }
 });
 
 class FullWidthTabs extends React.Component {
   state = {
-    value: 0,
+    value: 0
   };
 
   handleChange = (event, value) => {
@@ -51,6 +52,12 @@ class FullWidthTabs extends React.Component {
 
   handleChangeIndex = index => {
     this.setState({ value: index });
+  };
+
+  search = event => {
+    userService.searchUser(event.target.value).then(users => {
+      console.log(users);
+    });
   };
 
   render() {
@@ -69,7 +76,7 @@ class FullWidthTabs extends React.Component {
           <Tab label={pages.home.dashboardTab} />
         </Tabs>
         <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
@@ -84,9 +91,10 @@ class FullWidthTabs extends React.Component {
               <Input
                 id="search"
                 type="text"
+                onKeyUp={this.search}
                 endAdornment={
                   <InputAdornment position="end">
-                    <FontAwesomeIcon icon={['fal', 'search']} size="lg" />
+                    <FontAwesomeIcon icon={["fal", "search"]} size="lg" />
                   </InputAdornment>
                 }
               />
@@ -110,7 +118,7 @@ class FullWidthTabs extends React.Component {
 
 FullWidthTabs.propTypes = {
   classes: PropTypes.object,
-  theme: PropTypes.object,
+  theme: PropTypes.object
 };
 
 export default withStyles(styles, { withTheme: true })(FullWidthTabs);

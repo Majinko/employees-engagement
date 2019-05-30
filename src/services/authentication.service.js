@@ -3,13 +3,13 @@ import { Endpoint } from '../config'
 
 import { handleResponse } from '../helpers/handle-response'
 
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')))
+const jwtToken = new BehaviorSubject(JSON.parse(localStorage.getItem('jwtToken')))
 
 export const authenticationService = {
   login,
   logout,
-  currentUser: currentUserSubject.asObservable(),
-  get currentUserValue () { return currentUserSubject.value },
+  jwtToken: jwtToken.asObservable(),
+  get jwtTokenValue () { return jwtToken.value },
 }
 
 function login (usernameOrEmail, password)
@@ -20,21 +20,20 @@ function login (usernameOrEmail, password)
     body: JSON.stringify({ usernameOrEmail, password }),
   }
 
-
   return fetch(Endpoint + `/auth/signin`, requestOptions)
     .then(handleResponse)
-    .then(user => {
+    .then(token => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify(user))
-      currentUserSubject.next(user)
+      localStorage.setItem('jwtToken', JSON.stringify(token))
+      jwtToken.next(token)
 
-      return user
+      return token
     })
 }
 
 function logout ()
 {
   // remove user from local storage to log user out
-  localStorage.removeItem('currentUser')
-  currentUserSubject.next(null)
+  localStorage.removeItem('jwtToken')
+  jwtToken.next(null)
 }

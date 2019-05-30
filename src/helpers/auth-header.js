@@ -1,11 +1,15 @@
-import { authenticationService } from '@/_services';
+import { authenticationService } from "../services/authentication.service";
 
 export function authHeader() {
-    // return authorization header with jwt token
-    const currentUser = authenticationService.currentUserValue;
-    if (currentUser && currentUser.token) {
-        return { Authorization: `Bearer ${currentUser.token}` };
-    } else {
-        return {};
-    }
+  // return authorization header with jwt token
+  const jwtToken = authenticationService.jwtTokenValue;
+  if (jwtToken && jwtToken.accessToken) {
+    return {
+      Acept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwtToken.accessToken}`
+    };
+  } else {
+    return {};
+  }
 }
