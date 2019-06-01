@@ -51,12 +51,12 @@ class AspectDialog extends React.Component {
 
   handleSave = () => {
     this.props.handleClose();
-    // TODO: fix hardcoded feedback id
+
     if (this.state.feedback.length === 0) {
-      this.props.unsetAspect(5, false);
+      this.props.unsetAspect(this.props.currentId, false);
     } else {
-      this.props.setAspect(5, true);
-      this.props.leaveFeedback(5, this.state.feedback);
+      this.props.setAspect(this.props.currentId, true);
+      this.props.leaveFeedback(this.props.currentId, this.state.feedback);
     }
   };
 

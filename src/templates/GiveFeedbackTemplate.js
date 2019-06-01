@@ -32,10 +32,7 @@ class GiveFeedbackTemplate extends Component {
 
   state = {
     opened: false,
-  };
-
-  handleClickOpen = () => {
-    this.setState({ opened: true });
+    aspectId: null,
   };
 
   handleClose = () => {
@@ -59,7 +56,12 @@ class GiveFeedbackTemplate extends Component {
                   item
                   xs={6}
                   key={aspect.text}
-                  onClick={aspect.type === 'more' ? this.handleClickOpen : null}
+                  onClick={
+                    aspect.type === 'more'
+                      ? () =>
+                          this.setState({ opened: true, aspectId: aspect.id })
+                      : null
+                  }
                 >
                   <AspectCard aspect={aspect} />
                 </Grid>
@@ -75,6 +77,7 @@ class GiveFeedbackTemplate extends Component {
           </Button>
           <AspectDialog
             opened={this.state.opened}
+            currentId={this.state.aspectId}
             handleClose={() => this.handleClose()}
           />
         </PaperCard>
