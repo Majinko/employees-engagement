@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import { connect } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -41,6 +41,7 @@ const Styled = createStyled(theme => ({
 class AspectCard extends Component {
   constructor(props) {
     super(props);
+
     this.state = { title: '' };
 
     this.setAspectOnClick = this.setAspectOnClick.bind(this);

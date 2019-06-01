@@ -5,6 +5,7 @@ import Avatar from './../components/Avatar';
 
 function ProfileInfo({ name, position }) {
   const initialCharacter = name.substring(0, 1);
+
   return (
     <React.Fragment>
       <Avatar initials={initialCharacter} />
