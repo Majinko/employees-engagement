@@ -4,6 +4,7 @@ import { Typography } from '@material-ui/core';
 
 import PaperCard from './../components/PaperCard';
 import CustomGrid from './../components/CustomGrid';
+
 export default class IndexPage extends React.Component {
   render() {
     return (

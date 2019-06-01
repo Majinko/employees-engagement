@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
-
-import { pages } from './../data/pages';
 
 import AspectCard from './../components/AspectCard';
 import PaperCard from './../components/PaperCard';
+import ProfileInfo from './../components/ProfileInfo';
+
 import AspectDialog from './../templates/partials/AspectDialog';
 
 import { fetchAspects } from '../actions/aspectActions';
-import { connect } from 'react-redux';
-import ProfileInfo from './../components/ProfileInfo';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { pages } from './../data/pages';
 
 const styles = theme => ({
   button: {
@@ -79,6 +80,7 @@ class Something extends Component {
         </PaperCard>
       );
     }
+
     return (
       <PaperCard>
         <CircularProgress />;

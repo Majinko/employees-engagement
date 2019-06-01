@@ -1,27 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-import { Link } from "react-router-dom";
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
 
-import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import IconButton from "@material-ui/core/IconButton";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import InputLabel from "@material-ui/core/InputLabel";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { pages } from './../../data/pages';
 
-import { pages } from "./../../data/pages";
-import { authenticationService } from "../../services/authentication.service";
-
-import { withRouter } from "react-router";
+import { authenticationService } from '../../services/authentication.service';
 
 const styles = theme => ({
   margin: {
-    margin: theme.spacing(1)
-  }
+    margin: theme.spacing(1),
+  },
 });
 
 class AuthenticationFormControl extends React.Component {
@@ -30,17 +29,17 @@ class AuthenticationFormControl extends React.Component {
 
     // redirect to home if already logged in
     if (authenticationService.jwtTokenValue) {
-      this.props.history.push("/");
+      this.props.history.push('/');
     }
   }
 
   state = {
-    path: "/authentication",
-    email: "",
-    password: "",
+    path: '/authentication',
+    email: '',
+    password: '',
     showPassword: false,
-    repeatedPassword: "",
-    showRepeatedPassword: false
+    repeatedPassword: '',
+    showRepeatedPassword: false,
   };
 
   handleChange = prop => event => {
@@ -53,7 +52,7 @@ class AuthenticationFormControl extends React.Component {
 
   handleClickShowRepeatedPassword = () => {
     this.setState(state => ({
-      showRepeatedPassword: !state.showRepeatedPassword
+      showRepeatedPassword: !state.showRepeatedPassword,
     }));
   };
 
@@ -61,14 +60,14 @@ class AuthenticationFormControl extends React.Component {
     authenticationService
       .login(this.state.email, this.state.password)
       .then(page => {
-        this.props.history.push("/home");
+        this.props.history.push('/home');
       });
   };
 
   render() {
     const { classes, type } = this.props;
 
-    const register = type === "register";
+    const register = type === 'register';
 
     return (
       <React.Fragment>
@@ -77,24 +76,24 @@ class AuthenticationFormControl extends React.Component {
           className={classes.margin}
           onSubmit={this.submit}
         >
-          <InputLabel htmlFor={register ? "register-email" : "email"}>
+          <InputLabel htmlFor={register ? 'register-email' : 'email'}>
             {pages.authentication.email}
           </InputLabel>
           <Input
-            id={register ? "register-email" : "email"}
+            id={register ? 'register-email' : 'email'}
             type="email"
-            onChange={this.handleChange("email")}
+            onChange={this.handleChange('email')}
           />
         </FormControl>
         <FormControl fullWidth className={classes.margin}>
-          <InputLabel htmlFor={register ? "register-password" : "password"}>
+          <InputLabel htmlFor={register ? 'register-password' : 'password'}>
             {pages.authentication.password}
           </InputLabel>
           <Input
-            id={register ? "register-password" : "password"}
-            type={this.state.showPassword ? "text" : "password"}
+            id={register ? 'register-password' : 'password'}
+            type={this.state.showPassword ? 'text' : 'password'}
             value={this.state.password}
-            onChange={this.handleChange("password")}
+            onChange={this.handleChange('password')}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -103,13 +102,13 @@ class AuthenticationFormControl extends React.Component {
                 >
                   {this.state.showPassword ? (
                     <FontAwesomeIcon
-                      icon={["fal", "eye"]}
+                      icon={['fal', 'eye']}
                       size="xs"
                       className={classes.menuItemIcon}
                     />
                   ) : (
                     <FontAwesomeIcon
-                      icon={["fal", "eye-slash"]}
+                      icon={['fal', 'eye-slash']}
                       size="xs"
                       className={classes.menuItemIcon}
                     />
@@ -126,9 +125,9 @@ class AuthenticationFormControl extends React.Component {
             </InputLabel>
             <Input
               id="repeatedPassword"
-              type={this.state.showRepeatedPassword ? "text" : "password"}
+              type={this.state.showRepeatedPassword ? 'text' : 'password'}
               value={this.state.repeatedPassword}
-              onChange={this.handleChange("repeatedPassword")}
+              onChange={this.handleChange('repeatedPassword')}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -137,13 +136,13 @@ class AuthenticationFormControl extends React.Component {
                   >
                     {this.state.showRepeatedPassword ? (
                       <FontAwesomeIcon
-                        icon={["fal", "eye"]}
+                        icon={['fal', 'eye']}
                         size="xs"
                         className={classes.menuItemIcon}
                       />
                     ) : (
                       <FontAwesomeIcon
-                        icon={["fal", "eye-slash"]}
+                        icon={['fal', 'eye-slash']}
                         size="xs"
                         className={classes.menuItemIcon}
                       />
@@ -162,7 +161,7 @@ class AuthenticationFormControl extends React.Component {
           component={Link}
           to={this.state.path}
         >
-          {register ? "Sign up" : "Log in"}
+          {register ? 'Sign up' : 'Log in'}
         </Button>
       </React.Fragment>
     );
@@ -174,7 +173,7 @@ AuthenticationFormControl.propTypes = {
   type: PropTypes.string,
   match: PropTypes.object,
   location: PropTypes.object,
-  history: PropTypes.object
+  history: PropTypes.object,
 };
 
 export default withRouter(withStyles(styles)(AuthenticationFormControl));
