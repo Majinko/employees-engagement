@@ -1,20 +1,19 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-
 import { Provider } from 'react-redux';
-
-import './App.scss';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+
 import Routes from './Routes';
 import history from './history';
-
 import store from './store';
+
+import './App.scss';
 
 import Drawer from './components/Drawer';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faBars,
   faSignIn,

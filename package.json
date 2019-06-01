@@ -21,6 +21,9 @@
     "redux": "~4.0.1",
     "redux-thunk": "~2.3.0"
   },
+  "devDependencies": {
+    "prettier": "~1.17.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -41,5 +44,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
   }
 }

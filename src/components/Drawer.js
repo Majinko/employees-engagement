@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Link } from 'react-router-dom';
 
 import { Typography } from '@material-ui/core';
@@ -15,6 +14,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getSentenceCase, getPath } from './../utils';
+
 import { menuItems } from './../data/menuItems';
 
 const styles = theme => ({

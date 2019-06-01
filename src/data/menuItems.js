@@ -30,7 +30,7 @@ export const menuItems = [
     icon: 'cog',
   },
   {
-    hidden: true,
+    hidden: false,
     label: 'sign-out',
     icon: 'sign-out',
   },

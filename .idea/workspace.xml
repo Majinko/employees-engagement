@@ -4,7 +4,7 @@
     <list default="true" id="28bf4c4d-bdbc-4026-af0e-3962015f8041" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/helpers/auth-header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/auth-header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/authentication.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authentication.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authentication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/HomeTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/HomeTemplate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/partials/AuthenticationFormControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/partials/AuthenticationFormControl.js" afterDir="false" />
     </list>
@@ -57,7 +57,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/authentication.service.js">
+        <entry file="file://$PROJECT_DIR$/src/services/authentication.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
               <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="59" />
@@ -83,7 +83,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/user.service.js">
+        <entry file="file://$PROJECT_DIR$/src/services/user.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
               <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
@@ -153,17 +153,17 @@
         <option value="$PROJECT_DIR$/src/data/menuItems.js" />
         <option value="$PROJECT_DIR$/src/pages/authentication.js" />
         <option value="$PROJECT_DIR$/src/templates/AuthenticationTemplate.js" />
-        <option value="$PROJECT_DIR$/src/_services/authentication.service.js" />
+        <option value="$PROJECT_DIR$/src/_services/authentication.js" />
         <option value="$PROJECT_DIR$/src/_helpers/handle-response.js" />
         <option value="$PROJECT_DIR$/src/config.js" />
-        <option value="$PROJECT_DIR$/src/services/authentication.service.js" />
+        <option value="$PROJECT_DIR$/src/services/authentication.js" />
         <option value="$PROJECT_DIR$/src/helpers/handle-response.js" />
         <option value="$PROJECT_DIR$/src/templates/partials/AuthenticationFormControl.js" />
         <option value="$PROJECT_DIR$/src/services/search.service.js" />
         <option value="$PROJECT_DIR$/src/templates/HomeTemplate.js" />
         <option value="$PROJECT_DIR$/src/helpers/auth-header.js" />
         <option value="$PROJECT_DIR$/src/services/helper.service.js" />
-        <option value="$PROJECT_DIR$/src/services/user.service.js" />
+        <option value="$PROJECT_DIR$/src/services/user.js" />
       </list>
     </option>
   </component>
@@ -502,7 +502,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/authentication.service.js">
+    <entry file="file://$PROJECT_DIR$/src/services/authentication.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="59" />
@@ -524,7 +524,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/user.service.js">
+    <entry file="file://$PROJECT_DIR$/src/services/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
