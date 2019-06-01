@@ -17,7 +17,7 @@ import PaperCard from './../components/PaperCard';
 
 import { pages } from './../data/pages';
 
-import { userService } from './../services/user.service';
+import { userService } from './../services/user';
 
 function TabContainer({ children, dir }) {
   return (
