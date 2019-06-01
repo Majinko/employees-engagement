@@ -25,7 +25,7 @@ const styles = theme => ({
   },
 });
 
-class Something extends Component {
+class GiveFeedbackTemplate extends Component {
   componentWillMount() {
     this.props.fetchAspects();
   }
@@ -89,7 +89,7 @@ class Something extends Component {
   }
 }
 
-Something.propTypes = {
+GiveFeedbackTemplate.propTypes = {
   fetchAspects: PropTypes.func,
   aspects: PropTypes.array,
 };
@@ -101,4 +101,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchAspects }
-)(withStyles(styles)(Something));
+)(withStyles(styles)(GiveFeedbackTemplate));
