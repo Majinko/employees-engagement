@@ -1,13 +1,14 @@
-import { Endpoint } from "../config";
-import { authHeader } from "../helpers/auth-header";
-import { handleResponse } from "../helpers/handle-response";
+import { Endpoint } from '../config';
+
+import { authHeader } from '../helpers/auth-header';
+import { handleResponse } from '../helpers/handle-response';
 
 export const userService = {
-  searchUser
+  searchUser,
 };
 
 function searchUser(string) {
-  const requestOptions = { method: "GET", headers: authHeader() };
+  const requestOptions = { method: 'GET', headers: authHeader() };
 
   console.log(requestOptions);
 
