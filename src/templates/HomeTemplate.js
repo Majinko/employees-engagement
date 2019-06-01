@@ -13,11 +13,11 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 
-import PaperCard from '../components/PaperCard';
+import PaperCard from './../components/PaperCard';
 
-import { pages } from '../data/pages';
+import { pages } from './../data/pages';
 
-import { userService } from '../services/user.service';
+import { userService } from './../services/user.service';
 
 function TabContainer({ children, dir }) {
   return (

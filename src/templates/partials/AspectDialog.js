@@ -12,10 +12,10 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Bar from '../../components/Bar';
-import BarItem from '../../components/BarItem';
-import PaperCard from '../../components/PaperCard';
-import ProfileInfo from '../../components/ProfileInfo';
+import Bar from './../../components/Bar';
+import BarItem from './../../components/BarItem';
+import PaperCard from './../../components/PaperCard';
+import ProfileInfo from './../../components/ProfileInfo';
 
 import {
   leaveFeedback,

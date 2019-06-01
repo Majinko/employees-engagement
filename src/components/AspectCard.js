@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { setAspect } from '../actions/aspectActions';
+import { setAspect } from './../actions/aspectActions';
 
 function createStyled(styles, options) {
   function Styled(props) {

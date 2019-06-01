@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { pages } from './../../data/pages';
 
-import { authenticationService } from '../../services/authentication.service';
+import { authenticationService } from './../../services/authentication.service';
 
 const styles = theme => ({
   margin: {

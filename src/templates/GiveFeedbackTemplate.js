@@ -15,7 +15,7 @@ import ProfileInfo from './../components/ProfileInfo';
 
 import AspectDialog from './../templates/partials/AspectDialog';
 
-import { fetchAspects } from '../actions/aspectActions';
+import { fetchAspects } from './../actions/aspectActions';
 
 import { pages } from './../data/pages';
 

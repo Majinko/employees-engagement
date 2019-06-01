@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 
-import { Endpoint } from '../config';
-import { handleResponse } from '../helpers/handle-response';
+import { Endpoint } from './../config';
+import { handleResponse } from './../helpers/handle-response';
 
 const jwtToken = new BehaviorSubject(
   JSON.parse(localStorage.getItem('jwtToken'))
