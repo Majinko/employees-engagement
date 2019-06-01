@@ -83,7 +83,7 @@ class GiveFeedbackTemplate extends Component {
 
     return (
       <PaperCard>
-        <CircularProgress />;
+        <CircularProgress />
       </PaperCard>
     );
   }
