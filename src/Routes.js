@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import AuthRoute from './components/AuthRoute';
+
 import Authentication from './pages/authentication';
 import Home from './pages/home';
 import Index from './pages/index';
@@ -11,18 +13,50 @@ import GiveFeedback from './pages/give-feedback';
 import Error from './pages/error';
 import Success from './pages/success';
 
+// TODO: check if user `isAuthenticated` with function
+const isAuthenticated = true;
+
 const Routes = () => (
   <Switch>
     <Route exact path="/authentication" component={Authentication} />
-    <Route exact path="/home" component={Home} />
+    <AuthRoute
+      exact
+      path="/home"
+      component={Home}
+      isAuthenticated={isAuthenticated}
+    />
     <Route exact path="/" component={Index} />
-    <Route exact path="/my-profile" component={MyProfile} />
-    <Route exact path="/my-team" component={MyTeam} />
-    <Route exact path="/settings" component={Settings} />
-    <Route exact path="/" component={Index} />
-    <Route exact path="/give-feedback" component={GiveFeedback} />
+    <AuthRoute
+      exact
+      path="/my-profile"
+      component={MyProfile}
+      isAuthenticated={isAuthenticated}
+    />
+    <AuthRoute
+      exact
+      path="/my-team"
+      component={MyTeam}
+      isAuthenticated={isAuthenticated}
+    />
+    <AuthRoute
+      exact
+      path="/settings"
+      component={Settings}
+      isAuthenticated={isAuthenticated}
+    />
+    <AuthRoute
+      exact
+      path="/give-feedback"
+      component={GiveFeedback}
+      isAuthenticated={isAuthenticated}
+    />
     <Route exact path="/error" component={Error} />
-    <Route exact path="/success" component={Success} />
+    <AuthRoute
+      exact
+      path="/success"
+      component={Success}
+      isAuthenticated={isAuthenticated}
+    />
   </Switch>
 );
 
