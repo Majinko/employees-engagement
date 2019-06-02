@@ -18,4 +18,13 @@ export const pages = {
   profile: {
     submitButton: 'Submit',
   },
+  giveFeedback: {
+    modal: {
+      label: 'Leave feedback',
+      placeholder: 'Briefly describe the situation & say, how it impacted you.',
+      checkbox: 'Let’s meet & talk',
+      educationBox:
+        'Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.',
+    },
+  },
 };
