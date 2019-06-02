@@ -68,9 +68,7 @@ class DrawerComponent extends React.Component {
                   size="lg"
                   className={classes.menuItemIcon}
                 />
-                <Typography component={'p'}>
-                  {getSentenceCase(item.label)}
-                </Typography>
+                <Typography>{getSentenceCase(item.label)}</Typography>
               </MenuItem>
             )
         )}
