@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ const styles = theme => ({
   },
 });
 
-class GiveFeedbackTemplate extends Component {
+class GiveFeedbackTemplate extends React.Component {
   componentWillMount() {
     this.props.fetchAspects();
   }
