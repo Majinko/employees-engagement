@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getSentenceCase, getPath } from './../utils';
 
+// TODO: render some `menuItems` when user `isAuthenticated`
 import { menuItems } from './../data/menuItems';
 
 const styles = theme => ({
