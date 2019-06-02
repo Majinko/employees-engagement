@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -25,17 +25,14 @@ const styles = theme => ({
   },
 });
 
-class Something extends Component {
+class GiveFeedbackTemplate extends React.Component {
   componentWillMount() {
     this.props.fetchAspects();
   }
 
   state = {
     opened: false,
-  };
-
-  handleClickOpen = () => {
-    this.setState({ opened: true });
+    aspectId: null,
   };
 
   handleClose = () => {
@@ -59,7 +56,12 @@ class Something extends Component {
                   item
                   xs={6}
                   key={aspect.text}
-                  onClick={aspect.type === 'more' ? this.handleClickOpen : null}
+                  onClick={
+                    aspect.type === 'more'
+                      ? () =>
+                          this.setState({ opened: true, aspectId: aspect.id })
+                      : null
+                  }
                 >
                   <AspectCard aspect={aspect} />
                 </Grid>
@@ -75,6 +77,7 @@ class Something extends Component {
           </Button>
           <AspectDialog
             opened={this.state.opened}
+            currentId={this.state.aspectId}
             handleClose={() => this.handleClose()}
           />
         </PaperCard>
@@ -83,13 +86,13 @@ class Something extends Component {
 
     return (
       <PaperCard>
-        <CircularProgress />;
+        <CircularProgress />
       </PaperCard>
     );
   }
 }
 
-Something.propTypes = {
+GiveFeedbackTemplate.propTypes = {
   fetchAspects: PropTypes.func,
   aspects: PropTypes.array,
 };
@@ -101,4 +104,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchAspects }
-)(withStyles(styles)(Something));
+)(withStyles(styles)(GiveFeedbackTemplate));

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -38,7 +38,7 @@ const Styled = createStyled(theme => ({
   },
 }));
 
-class AspectCard extends Component {
+class AspectCard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -47,7 +47,11 @@ class AspectCard extends Component {
     this.setAspectOnClick = this.setAspectOnClick.bind(this);
   }
 
-  setAspectOnClick(id, value) {
+  setAspectOnClick(id, value, payload) {
+    if (payload) {
+      return;
+    }
+
     this.props.setAspect(id, !value);
   }
 
@@ -64,7 +68,9 @@ class AspectCard extends Component {
                 : classes.aspectCard
             }
             component={Button}
-            onClick={() => this.setAspectOnClick(aspect.id, aspect.isActive)}
+            onClick={() =>
+              this.setAspectOnClick(aspect.id, aspect.isActive, aspect.payload)
+            }
           >
             <FontAwesomeIcon icon={['fal', aspect.icon]} size="3x" />
             <Typography component={'h5'}>{aspect.text}</Typography>
