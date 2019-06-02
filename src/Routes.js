@@ -8,6 +8,8 @@ import MyProfile from './pages/my-profile';
 import MyTeam from './pages/my-team';
 import Settings from './pages/settings';
 import GiveFeedback from './pages/give-feedback';
+import Error from './pages/error';
+import Success from './pages/success';
 
 const Routes = () => (
   <Switch>
@@ -19,6 +21,8 @@ const Routes = () => (
     <Route exact path="/settings" component={Settings} />
     <Route exact path="/" component={Index} />
     <Route exact path="/give-feedback" component={GiveFeedback} />
+    <Route exact path="/error" component={Error} />
+    <Route exact path="/success" component={Success} />
   </Switch>
 );
 
