@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import SwipeableViews from 'react-swipeable-views';
 
@@ -16,8 +17,6 @@ import Typography from '@material-ui/core/Typography';
 import PaperCard from './../components/PaperCard';
 
 import { pages } from './../data/pages';
-
-import { userService } from './../services/user';
 
 function TabContainer({ children, dir }) {
   return (
@@ -55,12 +54,6 @@ class FullWidthTabs extends React.Component {
     this.setState({ value: index });
   };
 
-  search = event => {
-    userService.searchUser(event.target.value).then(users => {
-      console.log(users);
-    });
-  };
-
   render() {
     const { classes, theme } = this.props;
 
@@ -88,11 +81,15 @@ class FullWidthTabs extends React.Component {
             <Typography variant="h3" gutterBottom>
               {pages.home.giveFeedbackLabel}
             </Typography>
-            <FormControl fullWidth className={classes.marginTop}>
+            <FormControl
+              fullWidth
+              className={classes.marginTop}
+              component={Link}
+              to="/search"
+            >
               <Input
                 id="search"
                 type="text"
-                onKeyUp={this.search}
                 endAdornment={
                   <InputAdornment position="end">
                     <FontAwesomeIcon icon={['fal', 'search']} size="lg" />
