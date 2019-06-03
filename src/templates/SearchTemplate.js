@@ -7,6 +7,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
+import FeedbackCard from './../components/FeedbackCard';
+
 import { userService } from './../services/user';
 
 class FullWidthTabs extends React.Component {
@@ -31,6 +33,7 @@ class FullWidthTabs extends React.Component {
             }
           />
         </FormControl>
+        <FeedbackCard name="Linda Krásna" position="Project Lead" />
       </React.Fragment>
     );
   }
