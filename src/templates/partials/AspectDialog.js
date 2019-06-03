@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 
@@ -25,6 +28,8 @@ import {
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
+import { pages } from './../../data/pages';
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -39,6 +44,7 @@ class AspectDialog extends React.Component {
 
     this.state = {
       feedback: '',
+      checkboxChecked: true,
     };
 
     this.handleSave = this.handleSave.bind(this);
@@ -60,6 +66,10 @@ class AspectDialog extends React.Component {
     }
   };
 
+  handleCheckboxChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
+
   render() {
     const { fullScreen, classes, opened, handleClose } = this.props;
 
@@ -78,13 +88,27 @@ class AspectDialog extends React.Component {
               autoFocus
               margin="dense"
               id="name"
-              label="Leave feedback"
+              label={pages.giveFeedback.modal.label}
               type="email"
               fullWidth
               multiline
               onChange={this.onChange}
               value={this.state.feedback}
+              placeholder={pages.giveFeedback.modal.placeholder}
             />
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={this.state.checkboxChecked}
+                    onChange={this.handleCheckboxChange('checkboxChecked')}
+                    value="checkboxChecked"
+                    color="primary"
+                  />
+                }
+                label={pages.giveFeedback.modal.checkbox}
+              />
+            </FormGroup>
             <PaperCard>
               <Bar>
                 <BarItem>
@@ -92,9 +116,7 @@ class AspectDialog extends React.Component {
                 </BarItem>
                 <BarItem>
                   <Typography gutterBottom>
-                    Let Google help apps determine location. This means sending
-                    anonymous location data to Google, even when no apps are
-                    running.
+                    {pages.giveFeedback.modal.educationBox}
                   </Typography>
                 </BarItem>
               </Bar>
