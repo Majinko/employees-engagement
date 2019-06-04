@@ -12,6 +12,7 @@ import Settings from './pages/settings';
 import GiveFeedback from './pages/give-feedback';
 import Error from './pages/error';
 import Success from './pages/success';
+import Search from './pages/search';
 
 // TODO: check if user `isAuthenticated` with function
 const isAuthenticated = true;
@@ -55,6 +56,12 @@ const Routes = () => (
       exact
       path="/success"
       component={Success}
+      isAuthenticated={isAuthenticated}
+    />
+    <AuthRoute
+      exact
+      path="/search"
+      component={Search}
       isAuthenticated={isAuthenticated}
     />
   </Switch>
