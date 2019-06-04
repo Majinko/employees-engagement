@@ -12,13 +12,28 @@ import FeedbackCard from './../components/FeedbackCard';
 import { userService } from './../services/user';
 
 class FullWidthTabs extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      users: [],
+    };
+  }
+
   handleSearch = event => {
-    userService.searchUser(event.target.value).then(users => {
-      console.log(users);
+    userService.searchUsers(event.target.value).then(results => {
+      console.log(results);
+      this.setState({
+        users: results,
+      });
     });
+
+    console.log(this.state);
   };
 
   render() {
+    const { users } = this.state;
+
     return (
       <React.Fragment>
         <FormControl fullWidth>
@@ -33,7 +48,9 @@ class FullWidthTabs extends React.Component {
             }
           />
         </FormControl>
-        <FeedbackCard name="Linda Krásna" position="Project Lead" />
+        {users.map(user => (
+          <FeedbackCard name={user.name} position={user.position} />
+        ))}
       </React.Fragment>
     );
   }

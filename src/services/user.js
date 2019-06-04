@@ -4,13 +4,11 @@ import { authHeader } from '../helpers/auth-header';
 import { handleResponse } from '../helpers/handle-response';
 
 export const userService = {
-  searchUser,
+  searchUsers,
 };
 
-function searchUser(string) {
+function searchUsers(string) {
   const requestOptions = { method: 'GET', headers: authHeader() };
-
-  console.log(requestOptions);
 
   return fetch(Endpoint + `/user/search?name=${string}`, requestOptions).then(
     handleResponse
