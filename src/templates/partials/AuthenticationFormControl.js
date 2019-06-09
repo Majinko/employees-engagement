@@ -24,15 +24,6 @@ const styles = theme => ({
 });
 
 class AuthenticationFormControl extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // redirect to home if already logged in
-    if (authenticationService.jwtTokenValue) {
-      this.props.history.push('/');
-    }
-  }
-
   state = {
     path: '/authentication',
     email: '',
@@ -56,12 +47,14 @@ class AuthenticationFormControl extends React.Component {
     }));
   };
 
-  submit = event => {
+  submit = () => {
     authenticationService
       .login(this.state.email, this.state.password)
-      .then(page => {
-        this.props.history.push('/home');
-      });
+      .then(() => this.props.history.push('/home'));
+
+    if (authenticationService.jwtTokenValue) {
+      this.props.history.push('/');
+    }
   };
 
   render() {
@@ -82,6 +75,7 @@ class AuthenticationFormControl extends React.Component {
           <Input
             id={register ? 'register-email' : 'email'}
             type="email"
+            value={this.state.email}
             onChange={this.handleChange('email')}
           />
         </FormControl>

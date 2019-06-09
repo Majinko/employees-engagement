@@ -13,9 +13,7 @@ import { userService } from './../services/user';
 
 class FullWidthTabs extends React.Component {
   handleSearch = event => {
-    userService.searchUser(event.target.value).then(users => {
-      console.log(users);
-    });
+    userService.searchUser(event.target.value).then(users => {});
   };
 
   render() {
@@ -33,7 +31,7 @@ class FullWidthTabs extends React.Component {
             }
           />
         </FormControl>
-        <FeedbackCard name="Linda Krásna" position="Project Lead" />
+        <FeedbackCard name="Linda Krásna" position="Project Lead" hasArrow />
       </React.Fragment>
     );
   }

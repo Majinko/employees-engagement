@@ -57,7 +57,7 @@ class DrawerComponent extends React.Component {
                 component={Link}
                 to={
                   item.label === 'sign-out'
-                    ? '/'
+                    ? '/authentication'
                     : getPath(item.label) && item.label === 'splash-screen'
                     ? '/'
                     : getPath(item.label)
