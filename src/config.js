@@ -2,4 +2,4 @@
 
 export const Endpoint = 'http://localhost:5000/api/v1';
 
-export const primaryColor = '#0026AC';
+export const primaryColor = '#0392F7';
