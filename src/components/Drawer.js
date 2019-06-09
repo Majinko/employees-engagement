@@ -79,7 +79,7 @@ class DrawerComponent extends React.Component {
     return (
       <div>
         <div className={classes.root}>
-          <AppBar position="static">
+          <AppBar position="static" color="default">
             <Toolbar>
               <IconButton
                 className={classes.menuButton}
