@@ -56,12 +56,10 @@ class AuthenticationFormControl extends React.Component {
     }));
   };
 
-  submit = event => {
+  submit = () => {
     authenticationService
       .login(this.state.email, this.state.password)
-      .then(page => {
-        this.props.history.push('/home');
-      });
+      .then(() => this.props.history.push('/home'));
   };
 
   render() {
@@ -82,6 +80,7 @@ class AuthenticationFormControl extends React.Component {
           <Input
             id={register ? 'register-email' : 'email'}
             type="email"
+            value={this.state.email}
             onChange={this.handleChange('email')}
           />
         </FormControl>
