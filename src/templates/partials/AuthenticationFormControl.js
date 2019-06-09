@@ -24,15 +24,6 @@ const styles = theme => ({
 });
 
 class AuthenticationFormControl extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // redirect to home if already logged in
-    if (authenticationService.jwtTokenValue) {
-      this.props.history.push('/');
-    }
-  }
-
   state = {
     path: '/authentication',
     email: '',
@@ -60,6 +51,10 @@ class AuthenticationFormControl extends React.Component {
     authenticationService
       .login(this.state.email, this.state.password)
       .then(() => this.props.history.push('/home'));
+
+    if (authenticationService.jwtTokenValue) {
+      this.props.history.push('/');
+    }
   };
 
   render() {
