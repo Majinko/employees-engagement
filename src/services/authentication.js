@@ -7,15 +7,6 @@ const jwtToken = new BehaviorSubject(
   JSON.parse(localStorage.getItem('jwtToken'))
 );
 
-export const authenticationService = {
-  login,
-  logout,
-  jwtToken: jwtToken.asObservable(),
-  get jwtTokenValue() {
-    return jwtToken.value;
-  },
-};
-
 function login(usernameOrEmail, password) {
   const requestOptions = {
     method: 'POST',
@@ -38,3 +29,12 @@ function logout() {
   localStorage.removeItem('jwtToken');
   jwtToken.next(null);
 }
+
+export const authenticationService = {
+  login,
+  logout,
+  jwtToken: jwtToken.asObservable(),
+  get jwtTokenValue() {
+    return jwtToken.value;
+  },
+};
