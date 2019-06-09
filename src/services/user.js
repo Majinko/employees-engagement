@@ -10,7 +10,7 @@ export const userService = {
 function searchUser(string) {
   const requestOptions = { method: 'GET', headers: authHeader() };
 
-  return fetch(Endpoint + `/user/search?name=${string}`, requestOptions).then(
+  return fetch(`${Endpoint}/user/search?name=${string}`, requestOptions).then(
     handleResponse
   );
 }
