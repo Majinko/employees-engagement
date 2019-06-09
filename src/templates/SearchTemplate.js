@@ -22,13 +22,10 @@ class FullWidthTabs extends React.Component {
 
   handleSearch = event => {
     userService.searchUsers(event.target.value).then(results => {
-      console.log(results);
       this.setState({
         users: results,
       });
     });
-
-    console.log(this.state);
   };
 
   render() {
