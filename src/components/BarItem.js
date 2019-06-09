@@ -17,7 +17,6 @@ const styles = theme => ({
 
 function BarItem({ children, ...props }) {
   const { classes, isFilling } = props;
-  console.log(props);
 
   return (
     <div
