@@ -20,6 +20,7 @@ export default function(state = initialState, action) {
 
     case 'LEAVE_FEEDBACK':
       state.aspects[action.payload.id].payload = action.payload.payload;
+      state.aspects[action.payload.id].wantsToMeet = action.payload.wantsToMeet;
       return JSON.parse(JSON.stringify(state));
 
     default:

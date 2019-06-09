@@ -62,7 +62,11 @@ class AspectDialog extends React.Component {
       this.props.unsetAspect(this.props.currentId, false);
     } else {
       this.props.setAspect(this.props.currentId, true);
-      this.props.leaveFeedback(this.props.currentId, this.state.feedback);
+      this.props.leaveFeedback(
+        this.props.currentId,
+        this.state.feedback,
+        this.state.checkboxChecked
+      );
     }
   };
 
@@ -97,7 +101,6 @@ class AspectDialog extends React.Component {
               placeholder={pages.giveFeedback.modal.placeholder}
             />
             <FormGroup row>
-              {/* TODO: Add checkbox to redux */}
               <FormControlLabel
                 control={
                   <Checkbox
