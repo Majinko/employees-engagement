@@ -19,8 +19,8 @@ function CustomGrid({ children, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Grid container>
-        <Grid item xs={12} md={6} lg={4} className={classes.gridItem}>
+      <Grid container justify="center" spacing={2}>
+        <Grid item xs={12} md={6} lg={4}>
           {children}
         </Grid>
       </Grid>
