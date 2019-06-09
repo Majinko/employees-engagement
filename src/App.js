@@ -14,6 +14,8 @@ import './App.scss';
 
 import Drawer from './components/Drawer';
 
+import { primaryColor } from './config';
+
 import {
   faBars,
   faSignIn,
@@ -59,7 +61,7 @@ library.add(
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#0026AC',
+      main: primaryColor,
     },
   },
   typography: {

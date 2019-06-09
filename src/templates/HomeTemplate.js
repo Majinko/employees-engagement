@@ -15,6 +15,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 
 import PaperCard from './../components/PaperCard';
+import Chart from './../components/Chart';
 
 import { pages } from './../data/pages';
 
@@ -102,7 +103,9 @@ class FullWidthTabs extends React.Component {
             <Typography variant="h3" gutterBottom>
               {pages.home.dashboardIndividualRatings}
             </Typography>
-            <PaperCard>...</PaperCard>
+            <PaperCard>
+              <Chart />
+            </PaperCard>
             <Typography variant="h3" gutterBottom style={{ marginTop: 32 }}>
               {pages.home.dashboardOverallRatings}
             </Typography>

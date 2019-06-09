@@ -97,6 +97,7 @@ class AspectDialog extends React.Component {
               placeholder={pages.giveFeedback.modal.placeholder}
             />
             <FormGroup row>
+              {/* TODO: Add checkbox to redux */}
               <FormControlLabel
                 control={
                   <Checkbox
