@@ -59,7 +59,7 @@ class Chart extends React.Component {
     const aspectNames = [];
     const aspectRatings = [];
 
-    aspects.map(aspect => {
+    aspects.forEach(aspect => {
       const { text, rating } = aspect;
 
       aspectNames.push(text);
