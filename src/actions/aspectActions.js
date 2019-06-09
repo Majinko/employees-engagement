@@ -1,5 +1,5 @@
 const link =
-  'https://gist.githubusercontent.com/LukasPolak/a44080ed5b6e4e840363d672e5af0fd0/raw/38748da243e7953a52ca1ad0760557aa766aadaf/ee_aspects.json';
+  'https://gist.githubusercontent.com/LukasPolak/a44080ed5b6e4e840363d672e5af0fd0/raw/0a1cac8dfb4216ab95ec29411061347413947ade/ee_aspects.json';
 
 export const fetchAspects = () => dispatch => {
   fetch(link)
@@ -26,9 +26,9 @@ export const unsetAspect = (id, value) => dispatch => {
   });
 };
 
-export const leaveFeedback = (id, payload) => dispatch => {
+export const leaveFeedback = (id, payload, wantsToMeet) => dispatch => {
   dispatch({
     type: 'LEAVE_FEEDBACK',
-    payload: { id, payload },
+    payload: { id, payload, wantsToMeet },
   });
 };

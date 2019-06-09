@@ -63,6 +63,10 @@ class DrawerComponent extends React.Component {
                     : getPath(item.label)
                 }
                 key={item.label}
+                onClick={() =>
+                  item.label === 'sign-out' &&
+                  localStorage.removeItem('jwtToken')
+                }
               >
                 <FontAwesomeIcon
                   icon={['fal', item.icon]}
@@ -79,7 +83,7 @@ class DrawerComponent extends React.Component {
     return (
       <div>
         <div className={classes.root}>
-          <AppBar position="static">
+          <AppBar position="static" color="default">
             <Toolbar>
               <IconButton
                 className={classes.menuButton}

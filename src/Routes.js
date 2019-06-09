@@ -14,8 +14,7 @@ import Error from './pages/error';
 import Success from './pages/success';
 import Search from './pages/search';
 
-// TODO: check if user `isAuthenticated` with function
-const isAuthenticated = true;
+const isAuthenticated = localStorage.getItem('jwtToken') !== null;
 
 const Routes = () => (
   <Switch>
