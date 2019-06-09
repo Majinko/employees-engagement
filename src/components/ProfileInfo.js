@@ -12,14 +12,17 @@ const styles = theme => ({
 });
 
 function ProfileInfo({ name, position, ...props }) {
-  const initialCharacter = name.substring(0, 1);
+  const initials = name
+    .split(' ')
+    .map(characters => characters[0])
+    .join('');
 
   const { classes } = props;
 
   return (
     <React.Fragment>
       <div className={classes.avatar}>
-        <Avatar initials={initialCharacter} />
+        <Avatar initials={initials} />
       </div>
       <Typography variant="h3" gutterBottom>
         {name}
