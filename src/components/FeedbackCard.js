@@ -9,13 +9,16 @@ import Bar from './Bar';
 import BarItem from './BarItem';
 
 function ProfileInfo({ name, position }) {
-  const initialCharacter = name.substring(0, 1);
+  const initials = name
+    .split(' ')
+    .map(characters => characters[0])
+    .join('');
 
   return (
     <PaperCard>
       <Bar>
         <BarItem>
-          <Avatar initials={initialCharacter} />
+          <Avatar initials={initials} />
         </BarItem>
         <BarItem>
           <Typography variant="h3" gutterBottom>
