@@ -11,6 +11,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Toolbar from '@material-ui/core/Toolbar';
 
+import { setLoggedUser } from './../actions/authAction';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getSentenceCase, getPath } from './../utils';
@@ -63,10 +67,12 @@ class DrawerComponent extends React.Component {
                     : getPath(item.label)
                 }
                 key={item.label}
-                onClick={() =>
-                  item.label === 'sign-out' &&
-                  localStorage.removeItem('jwtToken')
-                }
+                onClick={() => {
+                  if (item.label === 'sign-out') {
+                    localStorage.removeItem('jwtToken');
+                    this.props.setLoggedUser();
+                  }
+                }}
               >
                 <FontAwesomeIcon
                   icon={['fal', item.icon]}
@@ -113,6 +119,13 @@ class DrawerComponent extends React.Component {
 
 DrawerComponent.propTypes = {
   classes: PropTypes.object,
+  setLoggedUser: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(DrawerComponent);
+export default compose(
+  withStyles(styles),
+  connect(
+    null,
+    { setLoggedUser }
+  )
+)(DrawerComponent);
