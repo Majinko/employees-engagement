@@ -9,7 +9,7 @@ import PaperCard from './PaperCard';
 import Bar from './Bar';
 import BarItem from './BarItem';
 
-function ProfileInfo({ name, position, hasArrow }) {
+function ProfileInfo({ name, position, timeStamp, hasArrow }) {
   const initials = name
     .split(' ')
     .map(characters => characters[0])
@@ -25,9 +25,16 @@ function ProfileInfo({ name, position, hasArrow }) {
           <Typography variant="h3" gutterBottom align="left">
             {name}
           </Typography>
-          <Typography variant="h4" gutterBottom align="left">
-            {position}
-          </Typography>
+          {position && (
+            <Typography variant="h4" align="left">
+              {position}
+            </Typography>
+          )}
+          {timeStamp && (
+            <Typography variant="h4" align="left" color="textSecondary">
+              {timeStamp}
+            </Typography>
+          )}
         </BarItem>
         {hasArrow && (
           <BarItem>
