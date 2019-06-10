@@ -17,6 +17,10 @@ import { pages } from './../../data/pages';
 
 import { authenticationService } from './../../services/authentication';
 
+import { setLoggedUser } from './../../actions/authAction';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+
 const styles = theme => ({
   margin: {
     margin: theme.spacing(1),
@@ -26,8 +30,8 @@ const styles = theme => ({
 class AuthenticationFormControl extends React.Component {
   state = {
     path: '/authentication',
-    email: '',
-    password: '',
+    email: 'marek.hlavco@gmail.com',
+    password: '123456',
     showPassword: false,
     repeatedPassword: '',
     showRepeatedPassword: false,
@@ -50,7 +54,10 @@ class AuthenticationFormControl extends React.Component {
   submit = () => {
     authenticationService
       .login(this.state.email, this.state.password)
-      .then(() => this.props.history.push('/home'));
+      .then(() => {
+        this.props.setLoggedUser();
+        this.props.history.push('/home');
+      });
 
     if (authenticationService.jwtTokenValue) {
       this.props.history.push('/');
@@ -170,4 +177,22 @@ AuthenticationFormControl.propTypes = {
   history: PropTypes.object,
 };
 
-export default withRouter(withStyles(styles)(AuthenticationFormControl));
+// export default withRouter(/* withStyles(styles) *//* (AuthenticationFormControl) */);
+
+// export default compose(
+//   withRouter(withStyles(styles)),
+//   connect(
+//     null,
+//     { setLoggedUser }
+//   )
+// )(AuthenticationFormControl);
+
+export default withRouter(
+  compose(
+    withStyles(styles),
+    connect(
+      null,
+      { setLoggedUser }
+    )
+  )(AuthenticationFormControl)
+);

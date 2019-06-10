@@ -32,6 +32,11 @@ class FullWidthTabs extends React.Component {
           />
         </FormControl>
         <FeedbackCard name="Linda Krásna" position="Project Lead" hasArrow />
+        <FeedbackCard
+          name="Linda Krásna"
+          timeStamp="May 12th, 2019 9:01pm"
+          hasArrow
+        />
       </React.Fragment>
     );
   }

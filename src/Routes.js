@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import AuthRoute from './components/AuthRoute';
 
 import Authentication from './pages/authentication';
@@ -14,56 +14,58 @@ import Error from './pages/error';
 import Success from './pages/success';
 import Search from './pages/search';
 
-const isAuthenticated = localStorage.getItem('jwtToken') !== null;
-
-const Routes = () => (
+const Routes = ({ token }) => (
   <Switch>
     <Route exact path="/authentication" component={Authentication} />
     <AuthRoute
       exact
       path="/home"
       component={Home}
-      isAuthenticated={isAuthenticated}
+      isAuthenticated={token !== null}
     />
     <Route exact path="/" component={Index} />
     <AuthRoute
       exact
       path="/my-profile"
       component={MyProfile}
-      isAuthenticated={isAuthenticated}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/my-team"
       component={MyTeam}
-      isAuthenticated={isAuthenticated}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/settings"
       component={Settings}
-      isAuthenticated={isAuthenticated}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/give-feedback"
       component={GiveFeedback}
-      isAuthenticated={isAuthenticated}
+      isAuthenticated={token !== null}
     />
     <Route exact path="/error" component={Error} />
     <AuthRoute
       exact
       path="/success"
       component={Success}
-      isAuthenticated={isAuthenticated}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/search"
       component={Search}
-      isAuthenticated={isAuthenticated}
+      isAuthenticated={token !== null}
     />
   </Switch>
 );
+
+Routes.propTypes = {
+  token: PropTypes.string,
+};
 
 export default Routes;
