@@ -1,5 +1,5 @@
-const link =
-  'https://gist.githubusercontent.com/LukasPolak/a44080ed5b6e4e840363d672e5af0fd0/raw/0a1cac8dfb4216ab95ec29411061347413947ade/ee_aspects.json';
+import { endpoint } from '../config';
+const link = endpoint + '/ratingcard/all';
 
 export const fetchAspects = () => dispatch => {
   fetch(link)
