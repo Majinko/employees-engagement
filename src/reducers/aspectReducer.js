@@ -3,6 +3,10 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  const aspect = state.aspects.find(
+    element => element.id === action.payload.id
+  );
+
   switch (action.type) {
     case 'FETCH_ASPECTS':
       return {
@@ -11,16 +15,16 @@ export default function(state = initialState, action) {
       };
 
     case 'SET_ASPECT':
-      state.aspects[action.payload.id].isActive = action.payload.value;
+      aspect.isActive = action.payload.value;
       return JSON.parse(JSON.stringify(state));
 
     case 'UNSET_ASPECT':
-      state.aspects[action.payload.id].isActive = action.payload.value;
+      aspect.isActive = action.payload.value;
       return JSON.parse(JSON.stringify(state));
 
     case 'LEAVE_FEEDBACK':
-      state.aspects[action.payload.id].payload = action.payload.payload;
-      state.aspects[action.payload.id].wantsToMeet = action.payload.wantsToMeet;
+      aspect.payload = action.payload.payload;
+      aspect.wantsToMeet = action.payload.wantsToMeet;
       return JSON.parse(JSON.stringify(state));
 
     default:
