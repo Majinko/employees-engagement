@@ -7,10 +7,12 @@ import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   paper: {
+    display: 'block',
     marginTop: theme.spacing(1),
     textAlign: 'center',
     margin: '0 auto',
     padding: `${theme.spacing(2)}px`,
+    textDecoration: 'none',
   },
 });
 
@@ -18,9 +20,9 @@ function PaperCard({ children, ...props }) {
   const { classes, hasLink } = props;
   if (hasLink) {
     return (
-      <Link to="give-feedback">
-        <Paper className={classes.paper}>{children}</Paper>
-      </Link>
+      <Paper component={Link} to="give-feedback" className={classes.paper}>
+        {children}
+      </Paper>
     );
   }
 

@@ -9,6 +9,9 @@ const styles = theme => ({
   avatar: {
     marginBottom: theme.spacing(1),
   },
+  text: {
+    textAlign: 'center',
+  },
 });
 
 function ProfileInfo({ name, position, ...props }) {
@@ -24,10 +27,10 @@ function ProfileInfo({ name, position, ...props }) {
       <div className={classes.avatar}>
         <Avatar initials={initials} />
       </div>
-      <Typography variant="h3" gutterBottom>
+      <Typography className={classes.text} variant="h3" gutterBottom>
         {name}
       </Typography>
-      <Typography variant="h4" gutterBottom>
+      <Typography className={classes.text} variant="h4" gutterBottom>
         {position}
       </Typography>
     </React.Fragment>

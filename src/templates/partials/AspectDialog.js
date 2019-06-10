@@ -36,6 +36,9 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  dialogContent: {
+    paddingTop: 24,
+  },
 });
 
 class AspectDialog extends React.Component {
@@ -86,7 +89,7 @@ class AspectDialog extends React.Component {
           onClose={handleClose}
           aria-labelledby="responsive-dialog-title"
         >
-          <DialogContent>
+          <DialogContent className={classes.dialogContent}>
             <ProfileInfo name="Linda Krásna" position="Project Lead" />
             <TextField
               autoFocus

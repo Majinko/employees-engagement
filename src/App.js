@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -8,13 +9,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Routes from './Routes';
 import history from './history';
-import store from './store';
 
 import './App.scss';
 
 import Drawer from './components/Drawer';
 
 import { primaryColor } from './config';
+
+import { setLoggedUser } from './actions/authAction';
 
 import {
   faBars,
@@ -108,18 +110,32 @@ const theme = createMuiTheme({
 });
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.setLoggedUser();
+  }
+
   render() {
+    const { token } = this.props;
     return (
-      <Provider store={store}>
-        <Router history={history}>
-          <MuiThemeProvider theme={theme}>
-            <Drawer />
-            <Routes />
-          </MuiThemeProvider>
-        </Router>
-      </Provider>
+      <Router history={history}>
+        <MuiThemeProvider theme={theme}>
+          <Drawer />
+          <Routes token={token} />
+        </MuiThemeProvider>
+      </Router>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  setLoggedUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  token: state.auth.token,
+});
+
+export default connect(
+  mapStateToProps,
+  { setLoggedUser }
+)(App);
