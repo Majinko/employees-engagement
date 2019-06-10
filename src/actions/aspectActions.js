@@ -1,5 +1,4 @@
 import { endpoint } from '../config';
-
 const link = endpoint + '/ratingcard/all';
 
 export const fetchAspects = () => dispatch => {
@@ -27,9 +26,9 @@ export const unsetAspect = (id, value) => dispatch => {
   });
 };
 
-export const leaveFeedback = (id, payload) => dispatch => {
+export const leaveFeedback = (id, payload, wantsToMeet) => dispatch => {
   dispatch({
     type: 'LEAVE_FEEDBACK',
-    payload: { id, payload },
+    payload: { id, payload, wantsToMeet },
   });
 };

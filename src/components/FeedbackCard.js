@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Typography } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Avatar from './../components/Avatar';
 import PaperCard from './PaperCard';
@@ -8,23 +9,31 @@ import PaperCard from './PaperCard';
 import Bar from './Bar';
 import BarItem from './BarItem';
 
-function ProfileInfo({ name, position }) {
-  const initialCharacter = name.substring(0, 1);
+function ProfileInfo({ name, position, hasArrow }) {
+  const initials = name
+    .split(' ')
+    .map(characters => characters[0])
+    .join('');
 
   return (
-    <PaperCard>
+    <PaperCard hasLink>
       <Bar>
         <BarItem>
-          <Avatar initials={initialCharacter} />
+          <Avatar initials={initials} />
         </BarItem>
-        <BarItem>
-          <Typography variant="h3" gutterBottom>
+        <BarItem isFilling>
+          <Typography variant="h3" gutterBottom align="left">
             {name}
           </Typography>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" gutterBottom align="left">
             {position}
           </Typography>
         </BarItem>
+        {hasArrow && (
+          <BarItem>
+            <FontAwesomeIcon icon={['fal', 'long-arrow-right']} size="2x" />
+          </BarItem>
+        )}
       </Bar>
     </PaperCard>
   );

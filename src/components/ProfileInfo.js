@@ -1,14 +1,29 @@
 import React from 'react';
 
 import { Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
 import Avatar from './../components/Avatar';
 
-function ProfileInfo({ name, position }) {
-  const initialCharacter = name.substring(0, 1);
+const styles = theme => ({
+  avatar: {
+    marginBottom: theme.spacing(1),
+  },
+});
+
+function ProfileInfo({ name, position, ...props }) {
+  const initials = name
+    .split(' ')
+    .map(characters => characters[0])
+    .join('');
+
+  const { classes } = props;
 
   return (
     <React.Fragment>
-      <Avatar initials={initialCharacter} />
+      <div className={classes.avatar}>
+        <Avatar initials={initials} />
+      </div>
       <Typography variant="h3" gutterBottom>
         {name}
       </Typography>
@@ -19,4 +34,4 @@ function ProfileInfo({ name, position }) {
   );
 }
 
-export default ProfileInfo;
+export default withStyles(styles)(ProfileInfo);

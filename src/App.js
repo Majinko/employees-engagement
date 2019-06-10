@@ -14,6 +14,8 @@ import './App.scss';
 
 import Drawer from './components/Drawer';
 
+import { primaryColor } from './config';
+
 import {
   faBars,
   faSignIn,
@@ -33,6 +35,7 @@ import {
   faCalendarAlt,
   faExchange,
   faCommentAltSmile,
+  faLongArrowRight,
 } from '@fortawesome/pro-light-svg-icons';
 
 library.add(
@@ -53,13 +56,14 @@ library.add(
   faHandshake,
   faCalendarAlt,
   faExchange,
-  faCommentAltSmile
+  faCommentAltSmile,
+  faLongArrowRight
 );
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#0026AC',
+      main: primaryColor,
     },
   },
   typography: {

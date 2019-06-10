@@ -10,12 +10,23 @@ const styles = theme => ({
       marginRight: 0,
     },
   },
+  rootGrow: {
+    flexGrow: 1,
+  },
 });
 
 function BarItem({ children, ...props }) {
-  const { classes } = props;
+  const { classes, isFilling } = props;
 
-  return <div className={classes.root}>{children}</div>;
+  return (
+    <div
+      className={
+        isFilling ? [classes.root, classes.rootGrow].join(' ') : classes.root
+      }
+    >
+      {children}
+    </div>
+  );
 }
 
 BarItem.propTypes = {

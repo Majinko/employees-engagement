@@ -49,7 +49,7 @@ class GiveFeedbackTemplate extends React.Component {
             Give Feedback
           </Typography>
           <ProfileInfo name="Linda Krásna" position="Project Lead" />
-          <Grid container justify="center" spacing={4}>
+          <Grid container justify="center" spacing={2}>
             {aspects &&
               aspects.map(aspect => (
                 <Grid
