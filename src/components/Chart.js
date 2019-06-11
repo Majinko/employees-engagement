@@ -17,7 +17,14 @@ class Chart extends React.Component {
 
     this.state = {
       options: {
-        labels: [],
+        labels: [
+          'Excellent communication',
+          'Extraordinary creativity',
+          'Goal-oriented',
+          'Effective cooperation',
+          'Precise planning',
+          'There was more',
+        ],
         tooltip: {
           enabled: false,
         },
@@ -43,7 +50,7 @@ class Chart extends React.Component {
       },
       series: [
         {
-          data: [],
+          data: [80, 50, 30, 40, 100, 5],
         },
       ],
     };
@@ -53,26 +60,27 @@ class Chart extends React.Component {
     this.props.fetchAspects();
   }
 
-  componentDidUpdate(prevProps) {
-    const { aspects } = this.props;
+  // TODO: fetch rating from backend
+  // componentDidUpdate(prevProps) {
+  //   const { aspects } = this.props;
 
-    const aspectNames = [];
-    const aspectRatings = [];
+  //   const aspectNames = [];
+  //   const aspectRatings = [];
 
-    aspects.forEach(aspect => {
-      const { text, rating } = aspect;
+  //   aspects.forEach(aspect => {
+  //     const { text, rating } = aspect;
 
-      aspectNames.push(text);
-      aspectRatings.push(rating);
-    });
+  //     aspectNames.push(text);
+  //     aspectRatings.push(rating);
+  //   });
 
-    if (aspects !== prevProps.aspects) {
-      this.setState({
-        options: { labels: aspectNames },
-        series: [{ data: aspectRatings }],
-      });
-    }
-  }
+  //   if (aspects !== prevProps.aspects) {
+  //     this.setState({
+  //       options: { labels: aspectNames },
+  //       series: [{ data: aspectRatings }],
+  //     });
+  //   }
+  // }
 
   render() {
     const { options, series } = this.state;
