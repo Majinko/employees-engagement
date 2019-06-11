@@ -21,59 +21,45 @@ const Routes = ({ token }) => (
       exact
       path="/home"
       component={Home}
-      // TODO: fix isAuthenticated prop
-      // isAuthenticated={token !== null}
-      isAuthenticated={true}
+      isAuthenticated={token !== null}
     />
     <Route exact path="/" component={Index} />
     <AuthRoute
       exact
       path="/my-profile"
       component={MyProfile}
-      // TODO: fix
-      // isAuthenticated={token !== null}
-      isAuthenticated={true}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/my-team"
       component={MyTeam}
-      // TODO: fix
-      // isAuthenticated={token !== null}
-      isAuthenticated={true}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/settings"
       component={Settings}
-      // TODO: fix
-      // isAuthenticated={token !== null}
-      isAuthenticated={true}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/give-feedback"
       component={GiveFeedback}
-      // TODO: fix
-      // isAuthenticated={token !== null}
-      isAuthenticated={true}
+      isAuthenticated={token !== null}
     />
     <Route exact path="/error" component={Error} />
     <AuthRoute
       exact
       path="/success"
       component={Success}
-      // TODO: fix
-      // isAuthenticated={token !== null}
-      isAuthenticated={true}
+      isAuthenticated={token !== null}
     />
     <AuthRoute
       exact
       path="/search"
       component={Search}
-      // TODO: fix
-      // isAuthenticated={token !== null}
-      isAuthenticated={true}
+      isAuthenticated={token !== null}
     />
   </Switch>
 );
