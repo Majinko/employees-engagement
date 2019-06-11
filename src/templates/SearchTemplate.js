@@ -46,7 +46,11 @@ class FullWidthTabs extends React.Component {
           />
         </FormControl>
         {users.map(user => (
-          <FeedbackCard name={user.name} position={user.position} />
+          <FeedbackCard
+            name={user.name}
+            position={user.position}
+            key={user.id}
+          />
         ))}
       </React.Fragment>
     );

@@ -1,6 +1,17 @@
 import { endpoint } from '../config';
 const link = endpoint + '/ratingcard/all';
 
+const staticAspect = {
+  id: 5,
+  type: 'more',
+  icon: 'exchange',
+  text: 'There was more',
+  isActive: false,
+  payload: null,
+  wantsToMeet: false,
+  rating: 20,
+};
+
 export const fetchAspects = () => dispatch => {
   fetch(link)
     .then(res => res.json())
@@ -10,6 +21,13 @@ export const fetchAspects = () => dispatch => {
         payload: aspects,
       })
     );
+};
+
+export const fetchStaticAspect = () => dispatch => {
+  dispatch({
+    type: 'FETCH_STATIC_ASPECTS',
+    payload: staticAspect,
+  });
 };
 
 export const setAspect = (id, value) => dispatch => {
