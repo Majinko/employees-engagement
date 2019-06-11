@@ -15,7 +15,7 @@ import ProfileInfo from './../components/ProfileInfo';
 
 import AspectDialog from './../templates/partials/AspectDialog';
 
-import { fetchAspects } from './../actions/aspectActions';
+import { fetchAspects, fetchStaticAspect } from './../actions/aspectActions';
 
 import { pages } from './../data/pages';
 
@@ -28,6 +28,7 @@ const styles = theme => ({
 class GiveFeedbackTemplate extends React.Component {
   componentWillMount() {
     this.props.fetchAspects();
+    this.props.fetchStaticAspect();
   }
 
   state = {
@@ -40,7 +41,7 @@ class GiveFeedbackTemplate extends React.Component {
   };
 
   render() {
-    const { classes, aspects } = this.props;
+    const { classes, aspects, staticAspect } = this.props;
 
     if (aspects.length > 0) {
       return (
@@ -52,20 +53,25 @@ class GiveFeedbackTemplate extends React.Component {
           <Grid container justify="center" spacing={2}>
             {aspects &&
               aspects.map(aspect => (
-                <Grid
-                  item
-                  xs={6}
-                  key={aspect.text}
-                  onClick={
-                    aspect.type === 'more'
-                      ? () =>
-                          this.setState({ opened: true, aspectId: aspect.id })
-                      : null
-                  }
-                >
+                <Grid item xs={6} key={aspect.text}>
                   <AspectCard aspect={aspect} />
                 </Grid>
               ))}
+            {staticAspect && (
+              <Grid
+                item
+                xs={6}
+                key={staticAspect.text}
+                onClick={() =>
+                  this.setState({
+                    opened: true,
+                    aspectId: staticAspect.id,
+                  })
+                }
+              >
+                <AspectCard aspect={staticAspect} />
+              </Grid>
+            )}
           </Grid>
           <Button
             variant="contained"
@@ -94,14 +100,16 @@ class GiveFeedbackTemplate extends React.Component {
 
 GiveFeedbackTemplate.propTypes = {
   fetchAspects: PropTypes.func,
+  fetchStaticAspect: PropTypes.func,
   aspects: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
   aspects: state.aspects.aspects,
+  staticAspect: state.aspects.staticAspect,
 });
 
 export default connect(
   mapStateToProps,
-  { fetchAspects }
+  { fetchAspects, fetchStaticAspect }
 )(withStyles(styles)(GiveFeedbackTemplate));

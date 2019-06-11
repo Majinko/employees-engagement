@@ -1,5 +1,6 @@
 const initialState = {
   aspects: [],
+  staticAspect: [],
 };
 
 export default function(state = initialState, action) {
@@ -14,12 +15,28 @@ export default function(state = initialState, action) {
         aspects: action.payload,
       };
 
+    case 'FETCH_STATIC_ASPECTS':
+      return {
+        ...state,
+        staticAspect: action.payload,
+      };
+
     case 'SET_ASPECT':
-      aspect.isActive = action.payload.value;
+      if (aspect) {
+        aspect.isActive = action.payload.value;
+      } else {
+        state.staticAspect.isActive = action.payload.value;
+      }
+
       return JSON.parse(JSON.stringify(state));
 
     case 'UNSET_ASPECT':
-      aspect.isActive = action.payload.value;
+      if (aspect) {
+        aspect.isActive = action.payload.value;
+      } else {
+        state.staticAspect.isActive = action.payload.value;
+      }
+
       return JSON.parse(JSON.stringify(state));
 
     case 'LEAVE_FEEDBACK':
