@@ -30,8 +30,8 @@ const styles = theme => ({
 class AuthenticationFormControl extends React.Component {
   state = {
     path: '/authentication',
-    email: 'marek.hlavco@gmail.com',
-    password: '123456',
+    email: '',
+    password: '',
     showPassword: false,
     repeatedPassword: '',
     showRepeatedPassword: false,
