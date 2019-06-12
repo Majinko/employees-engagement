@@ -9,14 +9,14 @@ import PaperCard from './PaperCard';
 import Bar from './Bar';
 import BarItem from './BarItem';
 
-function ProfileInfo({ name, position, timeStamp, hasArrow }) {
+function ProfileInfo({ name, position, timeStamp, hasArrow, user }) {
   const initials = name
     .split(' ')
     .map(characters => characters[0])
     .join('');
 
   return (
-    <PaperCard hasLink>
+    <PaperCard hasLink user={user}>
       <Bar>
         <BarItem>
           <Avatar initials={initials} />

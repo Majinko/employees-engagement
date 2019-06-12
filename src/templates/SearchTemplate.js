@@ -38,6 +38,7 @@ class FullWidthTabs extends React.Component {
             id="search"
             type="text"
             onKeyUp={this.handleSearch}
+            autoFocus
             endAdornment={
               <InputAdornment position="end">
                 <FontAwesomeIcon icon={['fal', 'search']} size="lg" />
@@ -50,6 +51,7 @@ class FullWidthTabs extends React.Component {
             name={user.name}
             position={user.position}
             key={user.id}
+            user={user}
           />
         ))}
       </React.Fragment>
