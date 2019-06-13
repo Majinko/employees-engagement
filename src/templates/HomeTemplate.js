@@ -28,12 +28,12 @@ TabContainer.propTypes = {
 };
 
 const styles = theme => ({
+  marginTop: {
+    marginTop: theme.spacing(2),
+  },
   root: {
     backgroundColor: theme.palette.background.paper,
     maxWidth: '100%',
-  },
-  marginTop: {
-    marginTop: theme.spacing(2),
   },
 });
 

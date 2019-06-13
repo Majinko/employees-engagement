@@ -25,8 +25,8 @@ const styles = theme => ({
 
 class GiveFeedbackTemplate extends React.Component {
   state = {
-    opened: false,
     aspectId: null,
+    opened: false,
   };
 
   componentWillMount() {
@@ -67,8 +67,8 @@ class GiveFeedbackTemplate extends React.Component {
                 key={staticAspect.text}
                 onClick={() =>
                   this.setState({
-                    opened: true,
                     aspectId: staticAspect.id,
+                    opened: true,
                   })
                 }
               >
@@ -82,9 +82,9 @@ class GiveFeedbackTemplate extends React.Component {
             className={classes.button}
             onClick={() =>
               postFeedbackAction({
-                relatedUserId: 813,
                 ids: [1007, 1008],
                 payload: 'test',
+                relatedUserId: 813,
                 wantsToMeet: true,
               })
             }

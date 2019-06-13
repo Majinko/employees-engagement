@@ -60,43 +60,43 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    useNextVariants: true,
     fontFamily: ['Montserrat', 'sans-serif'].join(','),
     h1: {
+      color: '#262626',
       fontSize: 32,
       fontWeight: 700,
-      color: '#262626',
     },
     h2: {
+      color: '#262626',
       fontSize: 24,
       fontWeight: 700,
-      color: '#262626',
     },
     h3: {
+      color: '#262626',
       fontSize: 18,
       fontWeight: 700,
-      color: '#262626',
     },
     h4: {
+      color: '#262626',
       fontSize: 16,
       fontWeight: 500,
-      color: '#262626',
     },
     h5: {
+      color: '#262626',
       fontSize: 16,
       fontWeight: 500,
-      color: '#262626',
     },
     h6: {
+      color: '#262626',
       fontSize: 16,
       fontWeight: 500,
-      color: '#262626',
     },
     p: {
+      color: '#262626',
       fontSize: 16,
       fontWeight: 400,
-      color: '#262626',
     },
+    useNextVariants: true,
   },
 });
 

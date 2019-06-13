@@ -23,13 +23,13 @@ TabContainer.propTypes = {
 };
 
 const styles = theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    maxWidth: '100%',
-  },
   image: {
     display: 'block',
     margin: '0 auto',
+    maxWidth: '100%',
+  },
+  root: {
+    backgroundColor: theme.palette.background.paper,
     maxWidth: '100%',
   },
 });

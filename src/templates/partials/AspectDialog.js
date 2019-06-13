@@ -26,13 +26,13 @@ import ProfileInfo from '../../components/ProfileInfo';
 import { pages } from '../../data/pages';
 
 const styles = () => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
   dialogContent: {
     paddingTop: 24,
+  },
+  root: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
   },
 });
 
@@ -41,8 +41,8 @@ class AspectDialog extends React.Component {
     super(props);
 
     this.state = {
-      feedback: '',
       checkboxChecked: true,
+      feedback: '',
     };
 
     this.handleSave = this.handleSave.bind(this);

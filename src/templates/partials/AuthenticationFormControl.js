@@ -24,11 +24,11 @@ const styles = theme => ({
 
 class AuthenticationFormControl extends React.Component {
   state = {
-    path: '/authentication',
     email: '',
     password: '',
-    showPassword: false,
+    path: '/authentication',
     repeatedPassword: '',
+    showPassword: false,
     showRepeatedPassword: false,
   };
 
@@ -175,8 +175,8 @@ class AuthenticationFormControl extends React.Component {
 
 AuthenticationFormControl.propTypes = {
   classes: PropTypes.shape.isRequired,
-  type: PropTypes.string.isRequired,
   history: PropTypes.shape.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default withRouter(
