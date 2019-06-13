@@ -25,7 +25,7 @@ function PaperCard({ children, user, ...props }) {
         to={{
           pathname: 'give-feedback',
           state: {
-            user: user,
+            user,
           },
         }}
         className={classes.paper}
