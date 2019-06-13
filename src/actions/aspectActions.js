@@ -1,4 +1,7 @@
 import { endpoint } from '../config';
+
+import { postFeedback } from './../services/aspects';
+
 const link = endpoint + '/ratingcard/all';
 
 const staticAspect = {
@@ -49,4 +52,9 @@ export const leaveFeedback = (id, payload, wantsToMeet) => dispatch => {
     type: 'LEAVE_FEEDBACK',
     payload: { id, payload, wantsToMeet },
   });
+};
+
+export const postFeedbackAction = async feedback => {
+  const data = await postFeedback(feedback);
+  console.log(data);
 };

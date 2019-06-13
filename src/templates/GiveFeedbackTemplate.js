@@ -15,7 +15,11 @@ import ProfileInfo from './../components/ProfileInfo';
 
 import AspectDialog from './../templates/partials/AspectDialog';
 
-import { fetchAspects, fetchStaticAspect } from './../actions/aspectActions';
+import {
+  fetchAspects,
+  fetchStaticAspect,
+  postFeedbackAction,
+} from './../actions/aspectActions';
 
 import { pages } from './../data/pages';
 
@@ -79,8 +83,15 @@ class GiveFeedbackTemplate extends React.Component {
           <Button
             variant="contained"
             color="primary"
-            to="/home"
             className={classes.button}
+            onClick={() =>
+              postFeedbackAction({
+                relatedUserId: 813,
+                ids: [1007, 1008],
+                payload: 'ahoj',
+                wantsToMeet: true,
+              })
+            }
           >
             {pages.profile.submitButton}
           </Button>
