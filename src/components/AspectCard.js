@@ -72,7 +72,9 @@ class AspectCard extends React.Component {
               this.setAspectOnClick(aspect.id, aspect.isActive, aspect.payload)
             }
           >
-            <FontAwesomeIcon icon={['fal', aspect.icon]} size="3x" />
+            {aspect.icon && (
+              <FontAwesomeIcon icon={['fal', aspect.icon]} size="3x" />
+            )}
             <Typography component={'h5'}>{aspect.text}</Typography>
           </Paper>
         )}
