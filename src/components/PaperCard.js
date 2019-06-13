@@ -16,11 +16,20 @@ const styles = theme => ({
   },
 });
 
-function PaperCard({ children, ...props }) {
+function PaperCard({ children, user, ...props }) {
   const { classes, hasLink } = props;
   if (hasLink) {
     return (
-      <Paper component={Link} to="give-feedback" className={classes.paper}>
+      <Paper
+        component={Link}
+        to={{
+          pathname: `give-feedback/${user.id}`,
+          state: {
+            user,
+          },
+        }}
+        className={classes.paper}
+      >
         {children}
       </Paper>
     );
