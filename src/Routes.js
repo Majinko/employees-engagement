@@ -17,49 +17,44 @@ import Search from './pages/search';
 const Routes = ({ token }) => (
   <Switch>
     <Route exact path="/authentication" component={Authentication} />
-    <AuthRoute
-      exact
-      path="/home"
-      component={Home}
-      isAuthenticated={token !== null}
-    />
+    <AuthRoute exact path="/home" component={Home} isAuthenticated={token} />
     <Route exact path="/" component={Index} />
     <AuthRoute
       exact
       path="/my-profile"
       component={MyProfile}
-      isAuthenticated={token !== null}
+      isAuthenticated={token}
     />
     <AuthRoute
       exact
       path="/my-team"
       component={MyTeam}
-      isAuthenticated={token !== null}
+      isAuthenticated={token}
     />
     <AuthRoute
       exact
       path="/settings"
       component={Settings}
-      isAuthenticated={token !== null}
+      isAuthenticated={token}
     />
     <AuthRoute
       exact
       path="/give-feedback/:id"
       component={GiveFeedback}
-      isAuthenticated={token !== null}
+      isAuthenticated={token}
     />
     <Route exact path="/error" component={Error} />
     <AuthRoute
       exact
       path="/success"
       component={Success}
-      isAuthenticated={token !== null}
+      isAuthenticated={token}
     />
     <AuthRoute
       exact
       path="/search"
       component={Search}
-      isAuthenticated={token !== null}
+      isAuthenticated={token}
     />
   </Switch>
 );
