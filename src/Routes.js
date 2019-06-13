@@ -44,7 +44,7 @@ const Routes = ({ token }) => (
     />
     <AuthRoute
       exact
-      path="/give-feedback"
+      path="/give-feedback/:id"
       component={GiveFeedback}
       isAuthenticated={token !== null}
     />

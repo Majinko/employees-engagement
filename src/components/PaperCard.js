@@ -23,7 +23,7 @@ function PaperCard({ children, user, ...props }) {
       <Paper
         component={Link}
         to={{
-          pathname: 'give-feedback',
+          pathname: `give-feedback/${user.id}`,
           state: {
             user,
           },
