@@ -15,7 +15,11 @@ import ProfileInfo from './../components/ProfileInfo';
 
 import AspectDialog from './../templates/partials/AspectDialog';
 
-import { fetchAspects, fetchStaticAspect } from './../actions/aspectActions';
+import {
+  fetchAspects,
+  fetchStaticAspect,
+  postFeedbackAction,
+} from './../actions/aspectActions';
 
 import { pages } from './../data/pages';
 
@@ -29,6 +33,7 @@ class GiveFeedbackTemplate extends React.Component {
   componentWillMount() {
     this.props.fetchAspects();
     this.props.fetchStaticAspect();
+    // TODO: update url
   }
 
   state = {
@@ -41,7 +46,9 @@ class GiveFeedbackTemplate extends React.Component {
   };
 
   render() {
-    const { classes, aspects, staticAspect } = this.props;
+    const { classes, aspects, staticAspect, user } = this.props;
+
+    const { name, position } = user;
 
     if (aspects.length > 0) {
       return (
@@ -49,7 +56,7 @@ class GiveFeedbackTemplate extends React.Component {
           <Typography variant="h1" gutterBottom>
             Give Feedback
           </Typography>
-          <ProfileInfo name="Linda Krásna" position="Project Lead" />
+          <ProfileInfo name={name} position={position} />
           <Grid container justify="center" spacing={2}>
             {aspects &&
               aspects.map(aspect => (
@@ -76,8 +83,15 @@ class GiveFeedbackTemplate extends React.Component {
           <Button
             variant="contained"
             color="primary"
-            to="/home"
             className={classes.button}
+            onClick={() =>
+              postFeedbackAction({
+                relatedUserId: 813,
+                ids: [1007, 1008],
+                payload: 'ahoj',
+                wantsToMeet: true,
+              })
+            }
           >
             {pages.profile.submitButton}
           </Button>
