@@ -56,5 +56,5 @@ export const leaveFeedback = (id, payload, wantsToMeet) => dispatch => {
 
 export const postFeedbackAction = async feedback => {
   const data = await postFeedback(feedback);
-  console.log(data);
+  return data;
 };

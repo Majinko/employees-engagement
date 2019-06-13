@@ -17,5 +17,7 @@ export const postFeedback = async feedback => {
     });
 
     return data;
-  } catch (err) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
