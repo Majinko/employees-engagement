@@ -1,25 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
-
-import { withStyles } from '@material-ui/core/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { pages } from './../../data/pages';
-
-import { authenticationService } from './../../services/authentication';
-
-import { setLoggedUser } from './../../actions/authAction';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import compose from 'recompose/compose';
+import { setLoggedUser } from '../../actions/authAction';
+import { pages } from '../../data/pages';
+import { authenticationService } from '../../services/authentication';
 
 const styles = theme => ({
   margin: {
@@ -52,20 +47,29 @@ class AuthenticationFormControl extends React.Component {
   };
 
   submit = () => {
-    authenticationService
-      .login(this.state.email, this.state.password)
-      .then(() => {
-        this.props.setLoggedUser();
-        this.props.history.push('/home');
-      });
+    const { email, password } = this.state;
+    const { history } = this.props;
+    authenticationService.login(email, password).then(() => {
+      setLoggedUser();
+      history.push('/home');
+    });
 
     if (authenticationService.jwtTokenValue) {
-      this.props.history.push('/');
+      history.push('/');
     }
   };
 
   render() {
     const { classes, type } = this.props;
+
+    const {
+      email,
+      showPassword,
+      password,
+      showRepeatedPassword,
+      repeatedPassword,
+      path,
+    } = this.state;
 
     const register = type === 'register';
 
@@ -82,7 +86,7 @@ class AuthenticationFormControl extends React.Component {
           <Input
             id={register ? 'register-email' : 'email'}
             type="email"
-            value={this.state.email}
+            value={email}
             onChange={this.handleChange('email')}
           />
         </FormControl>
@@ -92,8 +96,8 @@ class AuthenticationFormControl extends React.Component {
           </InputLabel>
           <Input
             id={register ? 'register-password' : 'password'}
-            type={this.state.showPassword ? 'text' : 'password'}
-            value={this.state.password}
+            type={showPassword ? 'text' : 'password'}
+            value={password}
             onChange={this.handleChange('password')}
             endAdornment={
               <InputAdornment position="end">
@@ -101,7 +105,7 @@ class AuthenticationFormControl extends React.Component {
                   aria-label="Toggle password visibility"
                   onClick={this.handleClickShowPassword}
                 >
-                  {this.state.showPassword ? (
+                  {showPassword ? (
                     <FontAwesomeIcon
                       icon={['fal', 'eye']}
                       size="xs"
@@ -126,8 +130,8 @@ class AuthenticationFormControl extends React.Component {
             </InputLabel>
             <Input
               id="repeatedPassword"
-              type={this.state.showRepeatedPassword ? 'text' : 'password'}
-              value={this.state.repeatedPassword}
+              type={showRepeatedPassword ? 'text' : 'password'}
+              value={repeatedPassword}
               onChange={this.handleChange('repeatedPassword')}
               endAdornment={
                 <InputAdornment position="end">
@@ -135,7 +139,7 @@ class AuthenticationFormControl extends React.Component {
                     aria-label="Toggle repeatedPassword visibility"
                     onClick={this.handleClickShowRepeatedPassword}
                   >
-                    {this.state.showRepeatedPassword ? (
+                    {showRepeatedPassword ? (
                       <FontAwesomeIcon
                         icon={['fal', 'eye']}
                         size="xs"
@@ -160,7 +164,7 @@ class AuthenticationFormControl extends React.Component {
           color="primary"
           className={classes.margin}
           component={Link}
-          to={this.state.path}
+          to={path}
         >
           {register ? 'Sign up' : 'Log in'}
         </Button>
@@ -170,22 +174,10 @@ class AuthenticationFormControl extends React.Component {
 }
 
 AuthenticationFormControl.propTypes = {
-  classes: PropTypes.object,
-  type: PropTypes.string,
-  match: PropTypes.object,
-  location: PropTypes.object,
-  history: PropTypes.object,
+  classes: PropTypes.shape.isRequired,
+  type: PropTypes.string.isRequired,
+  history: PropTypes.shape.isRequired,
 };
-
-// export default withRouter(/* withStyles(styles) *//* (AuthenticationFormControl) */);
-
-// export default compose(
-//   withRouter(withStyles(styles)),
-//   connect(
-//     null,
-//     { setLoggedUser }
-//   )
-// )(AuthenticationFormControl);
 
 export default withRouter(
   compose(

@@ -1,15 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
-
-import FeedbackCard from './../components/FeedbackCard';
-
-import { userService } from './../services/user';
+import React from 'react';
+import FeedbackCard from '../components/FeedbackCard';
+import { userService } from '../services/user';
 
 class FullWidthTabs extends React.Component {
   constructor(props) {
@@ -58,10 +53,5 @@ class FullWidthTabs extends React.Component {
     );
   }
 }
-
-FullWidthTabs.propTypes = {
-  classes: PropTypes.object,
-  theme: PropTypes.object,
-};
 
 export default FullWidthTabs;

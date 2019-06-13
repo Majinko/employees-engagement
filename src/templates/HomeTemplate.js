@@ -1,23 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-
-import SwipeableViews from 'react-swipeable-views';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { withStyles } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
-
-import PaperCard from './../components/PaperCard';
-import Chart from './../components/Chart';
-
-import { pages } from './../data/pages';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import SwipeableViews from 'react-swipeable-views';
+import Chart from '../components/Chart';
+import PaperCard from '../components/PaperCard';
+import { pages } from '../data/pages';
 
 function TabContainer({ children, dir }) {
   return (
@@ -28,8 +23,8 @@ function TabContainer({ children, dir }) {
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node,
-  dir: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  dir: PropTypes.string.isRequired,
 };
 
 const styles = theme => ({
@@ -57,11 +52,12 @@ class FullWidthTabs extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
+    const { value } = this.state;
 
     return (
       <div className={classes.root}>
         <Tabs
-          value={this.state.value}
+          value={value}
           onChange={this.handleChange}
           indicatorColor="primary"
           textColor="primary"
@@ -72,7 +68,7 @@ class FullWidthTabs extends React.Component {
         </Tabs>
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={this.state.value}
+          index={value}
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
@@ -118,8 +114,8 @@ class FullWidthTabs extends React.Component {
 }
 
 FullWidthTabs.propTypes = {
-  classes: PropTypes.object,
-  theme: PropTypes.object,
+  classes: PropTypes.shape.isRequired,
+  theme: PropTypes.shape.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(FullWidthTabs);

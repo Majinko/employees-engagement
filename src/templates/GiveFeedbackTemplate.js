@@ -1,27 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import { connect } from 'react-redux';
-
 import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
-
-import AspectCard from './../components/AspectCard';
-import PaperCard from './../components/PaperCard';
-import ProfileInfo from './../components/ProfileInfo';
-
-import AspectDialog from './../templates/partials/AspectDialog';
-
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   fetchAspects,
   fetchStaticAspect,
   postFeedbackAction,
-} from './../actions/aspectActions';
-
-import { pages } from './../data/pages';
+} from '../actions/aspectActions';
+import AspectCard from '../components/AspectCard';
+import PaperCard from '../components/PaperCard';
+import ProfileInfo from '../components/ProfileInfo';
+import { pages } from '../data/pages';
+import AspectDialog from './partials/AspectDialog';
 
 const styles = theme => ({
   button: {
@@ -30,16 +24,16 @@ const styles = theme => ({
 });
 
 class GiveFeedbackTemplate extends React.Component {
-  componentWillMount() {
-    this.props.fetchAspects();
-    this.props.fetchStaticAspect();
-    // TODO: update url
-  }
-
   state = {
     opened: false,
     aspectId: null,
   };
+
+  componentWillMount() {
+    fetchAspects();
+    fetchStaticAspect();
+    // TODO: update url
+  }
 
   handleClose = () => {
     this.setState({ opened: false });
@@ -49,6 +43,8 @@ class GiveFeedbackTemplate extends React.Component {
     const { classes, aspects, staticAspect, user } = this.props;
 
     const { name, position } = user;
+
+    const { opened, aspectId } = this.state;
 
     if (aspects.length > 0) {
       return (
@@ -88,7 +84,7 @@ class GiveFeedbackTemplate extends React.Component {
               postFeedbackAction({
                 relatedUserId: 813,
                 ids: [1007, 1008],
-                payload: 'ahoj',
+                payload: 'test',
                 wantsToMeet: true,
               })
             }
@@ -96,8 +92,8 @@ class GiveFeedbackTemplate extends React.Component {
             {pages.profile.submitButton}
           </Button>
           <AspectDialog
-            opened={this.state.opened}
-            currentId={this.state.aspectId}
+            opened={opened}
+            currentId={aspectId}
             handleClose={() => this.handleClose()}
           />
         </PaperCard>
@@ -113,9 +109,7 @@ class GiveFeedbackTemplate extends React.Component {
 }
 
 GiveFeedbackTemplate.propTypes = {
-  fetchAspects: PropTypes.func,
-  fetchStaticAspect: PropTypes.func,
-  aspects: PropTypes.array,
+  aspects: PropTypes.shape.isRequired,
 };
 
 const mapStateToProps = state => ({

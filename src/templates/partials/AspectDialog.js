@@ -1,8 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,27 +7,25 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
+import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import Bar from './../../components/Bar';
-import BarItem from './../../components/BarItem';
-import PaperCard from './../../components/PaperCard';
-import ProfileInfo from './../../components/ProfileInfo';
-
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
 import {
   leaveFeedback,
   setAspect,
   unsetAspect,
-} from './../../actions/aspectActions';
-import { connect } from 'react-redux';
-import compose from 'recompose/compose';
+} from '../../actions/aspectActions';
+import Bar from '../../components/Bar';
+import BarItem from '../../components/BarItem';
+import PaperCard from '../../components/PaperCard';
+import ProfileInfo from '../../components/ProfileInfo';
+import { pages } from '../../data/pages';
 
-import { pages } from './../../data/pages';
-
-const styles = theme => ({
+const styles = () => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -59,17 +54,16 @@ class AspectDialog extends React.Component {
   }
 
   handleSave = () => {
-    this.props.handleClose();
+    const { handleClose, currentId } = this.props;
+    const { feedback, checkboxChecked } = this.state;
 
-    if (this.state.feedback.length === 0) {
-      this.props.unsetAspect(this.props.currentId, false);
+    handleClose();
+
+    if (feedback.length === 0) {
+      unsetAspect(currentId, false);
     } else {
-      this.props.setAspect(this.props.currentId, true);
-      this.props.leaveFeedback(
-        this.props.currentId,
-        this.state.feedback,
-        this.state.checkboxChecked
-      );
+      setAspect(currentId, true);
+      leaveFeedback(currentId, feedback, checkboxChecked);
     }
   };
 
@@ -79,6 +73,7 @@ class AspectDialog extends React.Component {
 
   render() {
     const { fullScreen, classes, opened, handleClose } = this.props;
+    const { feedback, checkboxChecked } = this.state;
 
     return (
       <div>
@@ -100,14 +95,14 @@ class AspectDialog extends React.Component {
               fullWidth
               multiline
               onChange={this.onChange}
-              value={this.state.feedback}
+              value={feedback}
               placeholder={pages.giveFeedback.modal.placeholder}
             />
             <FormGroup row>
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={this.state.checkboxChecked}
+                    checked={checkboxChecked}
                     onChange={this.handleCheckboxChange('checkboxChecked')}
                     value="checkboxChecked"
                     color="primary"
@@ -147,9 +142,6 @@ class AspectDialog extends React.Component {
 
 AspectDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
-  leaveFeedback: PropTypes.func.isRequired,
-  unsetAspect: PropTypes.func.isRequired,
-  setAspect: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
