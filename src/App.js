@@ -1,44 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Router } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
 import { library } from '@fortawesome/fontawesome-svg-core';
-
-import Routes from './Routes';
-import history from './history';
-
-import './App.scss';
-
-import Drawer from './components/Drawer';
-
-import { primaryColor } from './config';
-
-import { setLoggedUser } from './actions/authAction';
-
 import {
   faBars,
-  faSignIn,
-  faHome,
-  faUser,
-  faUsers,
-  faCog,
-  faSignOut,
   faBug,
+  faBullseyeArrow,
+  faCalendarAlt,
+  faCog,
+  faCommentAltSmile,
+  faExchange,
   faEye,
   faEyeSlash,
-  faSearch,
-  faUserHeadset,
-  faLightbulbOn,
-  faBullseyeArrow,
   faHandshake,
-  faCalendarAlt,
-  faExchange,
-  faCommentAltSmile,
+  faHome,
+  faLightbulbOn,
   faLongArrowRight,
+  faSearch,
+  faSignIn,
+  faSignOut,
+  faUser,
+  faUserHeadset,
+  faUsers,
 } from '@fortawesome/pro-light-svg-icons';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Router } from 'react-router-dom';
+import { setLoggedUser } from './actions/authAction';
+import './App.scss';
+import Drawer from './components/Drawer';
+import { primaryColor } from './config';
+import history from './history';
+import Routes from './Routes';
 
 library.add(
   faBars,
@@ -111,7 +102,7 @@ const theme = createMuiTheme({
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.setLoggedUser();
+    setLoggedUser();
   }
 
   render() {
@@ -126,10 +117,6 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  setLoggedUser: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
   token: state.auth.token,
