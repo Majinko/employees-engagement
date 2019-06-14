@@ -36,6 +36,7 @@
   },
   "plugins": ["react"],
   "rules": {
+    "quotes": ["error", "single"],
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
     "lines-between-class-members": ["error", "always"],
