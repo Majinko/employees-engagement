@@ -1,20 +1,32 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
-  "extends": ["eslint:recommended", "airbnb", "prettier", "prettier/react"],
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+    "react-app"
+  ],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly",
-    "window": true,
-    "document": true,
-    "localStorage": true,
-    "FormData": true,
-    "FileReader": true,
     "Blob": true,
-    "navigator": true
+    "document": true,
+    "FileReader": true,
+    "FormData": true,
+    "localStorage": true,
+    "navigator": true,
+    "SharedArrayBuffer": "readonly",
+    "window": true
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -22,9 +34,17 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier"],
-  "parser": "babel-eslint",
+  "plugins": ["react"],
   "rules": {
+    "import/imports-first": ["error", "absolute-first"],
+    "import/newline-after-import": "error",
+    "lines-between-class-members": ["error", "always"],
+    "no-empty": "error",
+    "no-underscore-dangle": 0,
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "next": "return", "prev": "*" }
+    ],
     "react/jsx-filename-extension": [
       1,
       {
@@ -32,9 +52,6 @@
       }
     ],
     "react/prop-types": 0,
-    "no-underscore-dangle": 0,
-    "import/imports-first": ["error", "absolute-first"],
-    "import/newline-after-import": "error",
     "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": false }],
     "sort-vars": ["error", { "ignoreCase": true }]
   }
