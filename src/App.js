@@ -107,6 +107,7 @@ class App extends React.Component {
 
   render() {
     const { token } = this.props;
+
     return (
       <Router history={history}>
         <MuiThemeProvider theme={theme}>
